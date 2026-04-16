@@ -301,8 +301,50 @@ h1, h2, h3, h4 {
   padding: 0 4px;
 }
 
-/* Timeline bar hidden — clean presentation */
-#timeline-bar { display: none; }
+/* ===== TIMELINE YEAR BAR ===== */
+#timeline-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 4px 6px;
+  background: rgba(10,20,16,0.75);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#timeline-bar.visible { opacity: 1; }
+.tl-year {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--text-dim);
+  transition: all 0.4s ease;
+  letter-spacing: 0.04em;
+}
+.tl-year.active {
+  background: var(--green);
+  color: var(--bg-deep);
+}
+.tl-year.past {
+  color: var(--green-soft);
+}
+.tl-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
 
 /* ===== IMAGE GALLERY (compact horizontal strip below text) ===== */
 .gallery {
