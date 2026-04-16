@@ -188,15 +188,14 @@ function renderSlideContent(sec) {
       </div>`;
   }
 
-  // Gallery: array of image slugs rendered as a tiled grid
+  // Gallery: compact horizontal strip of images
   let gallery = '';
   if (sec.gallery && sec.gallery.length) {
-    const cols = sec.gallery.length <= 2 ? 2 : sec.gallery.length <= 4 ? 2 : 3;
     const imgs = sec.gallery.map(ref => {
       const f = imageFileFromRef(ref);
       return f ? `<img src="${f}" alt="" loading="lazy">` : '';
     }).join('');
-    gallery = `<div class="gallery cols-${cols}">${imgs}</div>`;
+    gallery = `<div class="gallery">${imgs}</div>`;
   }
 
   return `

@@ -294,20 +294,19 @@ h1, h2, h3, h4 {
 /* Timeline bar hidden — clean presentation */
 #timeline-bar { display: none; }
 
-/* ===== IMAGE GALLERY (tiled grid, positioned at bottom of slide) ===== */
+/* ===== IMAGE GALLERY (compact horizontal strip below text) ===== */
 .gallery {
   display: grid;
-  gap: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 5px;
   margin-top: 16px;
   width: 100%;
-  max-width: 100%;
+  max-height: 22vh;
 }
-.gallery.cols-2 { grid-template-columns: repeat(2, 1fr); }
-.gallery.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
 .gallery img {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
+  max-height: 22vh;
   object-fit: cover;
   border-radius: 4px;
   opacity: 0;
