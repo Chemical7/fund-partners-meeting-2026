@@ -347,18 +347,23 @@ function setupObserver(version) {
         dock.classList.remove('fullscreen');
       }
 
-      // Brand mark + ticker: cover shows logo panel, inner slides show hashtag + ticker
+      // Cover: show logo panel only. Inner slides: show hashtag, ticker, tabs, timeline
       const coverMark = document.getElementById('cover-mark');
       const pinnedMark = document.getElementById('pinned-mark');
       const ticker = document.getElementById('ticker');
+      const tabs = document.getElementById('tabs');
+      const tlBar = document.getElementById('timeline-bar');
       if (type === 'cover') {
         if (coverMark) coverMark.classList.remove('gone');
         if (pinnedMark) pinnedMark.classList.remove('visible');
         if (ticker) ticker.classList.remove('visible');
+        if (tabs) tabs.classList.add('cover-hidden');
+        if (tlBar) tlBar.classList.remove('visible');
       } else {
         if (coverMark) coverMark.classList.add('gone');
         if (pinnedMark) pinnedMark.classList.add('visible');
         if (ticker) ticker.classList.add('visible');
+        if (tabs) tabs.classList.remove('cover-hidden');
       }
 
       // Progress bar + timeline year
