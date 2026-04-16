@@ -115,7 +115,17 @@ function buildTileOrder(flatSlides) {
       });
     });
   });
-  // Do NOT pad with leftovers: if an image isn't referenced, it has no home.
+  // For the final collage: include ALL images from this tab (heroes + refs)
+  // so the collage is comprehensive
+  flatSlides.forEach(slide => {
+    if (slide.heroImage) {
+      const f = imageFileFromRef(slide.heroImage);
+      if (f && !seen.has(f)) {
+        seen.add(f);
+        out.push({ img: { file: f }, sectionIdx: flatSlides.length - 1 });
+      }
+    }
+  });
   return out;
 }
 
