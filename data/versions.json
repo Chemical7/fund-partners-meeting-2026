@@ -15,7 +15,7 @@
       {
         "id": "why",
         "year": "Origin",
-        "heroImage": "roundtables--mg-0272",
+        "heroImage": "portfolio-new--shd5029-53514672828-o",
         "imageRefs": [],
         "beats": [
           {
@@ -48,7 +48,7 @@
             "subtitle": "African-led investment vehicles. Embedded capital. An ecosystem-first approach. The architecture was deliberate: those closest to the problem are closest to the solution.",
             "gallery": [
               "fund-launch--fund-launch-aruwa-capital",
-              "aruwa--aruwa-capital-press-release"
+              "aruwa--adesuwa-okunbo-rhodes-1d5a8294"
             ]
           },
           {
@@ -102,9 +102,8 @@
         "year": "2024",
         "heroImage": "east-africa--mastercard-kenya-portraits0019",
         "imageRefs": [
-          "east-africa--mastercard-kenya-portraits0016",
-          "east-africa--mastercard-kenya-portraits0056",
-          "east-africa--mastercard-kenya-portraits0088"
+          "east-africa--mastercard-kenya-portraits0051",
+          "east-africa--mastercard-kenya-portraits0056"
         ],
         "beats": [
           {
@@ -113,10 +112,9 @@
             "title": "The system starts to move.",
             "subtitle": "The portfolio is no longer a set of bets. It is a body of evidence. Relationships built. Partnerships activated.",
             "gallery": [
-              "east-africa--mastercard-kenya-portraits0016",
+              "east-africa--mastercard-kenya-portraits0051",
               "east-africa--mastercard-kenya-portraits0056",
-              "east-africa--mastercard-kenya-portraits0088",
-              "east-africa--mastercard-kenya-portraits0086-east-africa-video"
+              "east-africa--mastercard-kenya-portraits0013"
             ]
           },
           {
@@ -132,7 +130,7 @@
         "type": "pause",
         "year": "2024",
         "title": "The question was never: does it work? The question is: how far can it scale?",
-        "heroImage": "east-africa--mastercard-kenya-portraits0104",
+        "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0027-5403",
         "imageRefs": []
       },
       {
@@ -148,11 +146,8 @@
           "koolboks--shd5723-53335562759-o",
           "koolboks--shd5761-53335225221-o",
           "portfolio-new--shd4983-53513614582-o",
-          "portfolio-new--shd5002-53514937125-o",
           "portfolio-new--shd5029-53514672828-o",
-          "portfolio-new--shd5245-53514937110-o",
-          "portfolio-new--shd5660-53514498171-o",
-          "portfolio-new--shd5676-53513614532-o"
+          "portfolio-new--shd5245-53514937110-o"
         ],
         "beats": [
           {
@@ -166,7 +161,7 @@
               "koolboks--shd5688-53335563384-o",
               "portfolio-new--shd5029-53514672828-o",
               "portfolio-new--shd5245-53514937110-o",
-              "portfolio-new--shd5660-53514498171-o"
+              "portfolio-new--shd4983-53513614582-o"
             ]
           },
           {
@@ -202,7 +197,7 @@
               "taeillio--shd5484-53335673175-o",
               "taeillio--shd5546-53335213246-o",
               "koolboks--shd5723-53335562759-o",
-              "portfolio-new--shd4983-53513614582-o"
+              "taeillio--shd5596-53335449163-o"
             ]
           }
         ]
@@ -218,7 +213,7 @@
       {
         "id": "now-2025",
         "year": "Now",
-        "heroImage": "east-africa--mastercard-kenya-portraits0051",
+        "heroImage": "tomato-jos--20250424-131258",
         "imageRefs": [
           "kazana--dsc03164-1-54037292014-o",
           "kazana--dsc03190-1-54037292029-o"
@@ -262,11 +257,7 @@
         "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0025-5403",
         "imageRefs": [
           "east-africa--mastercard-uganda-forma-foods-portraits0027-5403",
-          "east-africa--mastercard-uganda-inua-capital-portraits0009-540",
-          "roundtables--mg-0414",
-          "roundtables--img-9002",
-          "east-africa--mastercard-kenya-portraits0002",
-          "east-africa--mastercard-kenya-portraits0025"
+          "east-africa--mastercard-uganda-inua-capital-portraits0009-540"
         ],
         "beats": [
           {
@@ -277,8 +268,8 @@
             "gallery": [
               "east-africa--mastercard-uganda-forma-foods-portraits0027-5403",
               "east-africa--mastercard-uganda-inua-capital-portraits0009-540",
-              "east-africa--mastercard-kenya-portraits0002",
-              "east-africa--mastercard-kenya-portraits0025"
+              "agroeknor--amina-01",
+              "agroeknor--amina-02"
             ]
           },
           {
@@ -354,15 +345,11 @@
       },
       {
         "id": "storytelling",
-        "heroImage": "tomato-jos--20250424-131258",
+        "heroImage": "east-africa--mastercard-kenya-portraits0002",
         "imageRefs": [
-          "agroeknor--amina-01",
-          "agroeknor--amina-02",
-          "east-africa--mastercard-kenya-portraits0002",
-          "east-africa--mastercard-kenya-portraits0019",
+          "east-africa--mastercard-kenya-portraits0016",
           "east-africa--mastercard-kenya-portraits0025",
-          "east-africa--mastercard-kenya-portraits0056",
-          "east-africa--mastercard-kenya-portraits0013"
+          "east-africa--mastercard-kenya-portraits0088"
         ],
         "beats": [
           {
@@ -371,12 +358,12 @@
             "title": "This is proximity, not content production.",
             "subtitle": "We have been in the field. Ethiopia, Ghana, across East and West Africa. Capturing evidence that turns success stories into proof points.",
             "gallery": [
-              "agroeknor--amina-01",
-              "east-africa--mastercard-kenya-portraits0013",
-              "east-africa--mastercard-kenya-portraits0019",
+              "east-africa--mastercard-kenya-portraits0002",
+              "east-africa--mastercard-kenya-portraits0016",
               "east-africa--mastercard-kenya-portraits0025",
-              "east-africa--mastercard-kenya-portraits0056",
-              "east-africa--mastercard-kenya-portraits0086-east-africa-video"
+              "east-africa--mastercard-kenya-portraits0088",
+              "east-africa--mastercard-kenya-portraits0086-east-africa-video",
+              "east-africa--mastercard-kenya-portraits0002-joyce-ann-chui-ventur"
             ]
           },
           {
@@ -407,9 +394,8 @@
       },
       {
         "id": "thought-leadership",
-        "heroImage": "aruwa--adesuwa-okunbo-rhodes-1d5a8294",
+        "heroImage": "aruwa--aruwa-capital-press-release",
         "imageRefs": [
-          "aruwa--aruwa-capital-press-release",
           "weave--weave-capital"
         ],
         "beats": [
@@ -432,11 +418,10 @@
       },
       {
         "id": "impact",
-        "heroImage": "east-africa--mastercard-kenya-portraits0051",
+        "heroImage": "east-africa--mastercard-kenya-portraits0086-east-africa-video",
         "imageRefs": [
-          "east-africa--mastercard-kenya-portraits0016",
-          "east-africa--mastercard-kenya-portraits0088",
-          "east-africa--mastercard-kenya-portraits0104"
+          "east-africa--mastercard-kenya-portraits0104",
+          "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54"
         ],
         "beats": [
           {
@@ -552,36 +537,22 @@
         "eyebrow": "The next phase",
         "title": "If STICC+ is the engine, what do we do with it?",
         "subtitle": "ATI Capital Shift as a content engine. The Fund Podcast as a convening platform.",
-        "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits000",
+        "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0005-54037454",
         "imageRefs": [
-          "east-africa--mastercard-uganda-equator-chocolate-portraits000-2",
-          "east-africa--mastercard-uganda-forma-foods-portraits0005-54037454",
           "east-africa--mastercard-uganda-forma-foods-portraits0030-54037328",
           "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54",
-          "kazana--dsc03164-1-54037292014-o",
-          "kazana--dsc03190-1-54037292029-o"
+          "portfolio-new--shd5660-53514498171-o",
+          "portfolio-new--shd5676-53513614532-o"
         ]
       },
       {
         "id": "close",
-        "heroImage": "east-africa--mastercard-kenya-portraits0086-east-africa-video",
+        "heroImage": "avpa-2025--brand-logo",
         "imageRefs": [
-          "portfolio-new--shd4983-53513614582-o",
-          "portfolio-new--shd5002-53514937125-o",
-          "portfolio-new--shd5029-53514672828-o",
-          "portfolio-new--shd5245-53514937110-o",
           "portfolio-new--shd5660-53514498171-o",
           "portfolio-new--shd5676-53513614532-o",
-          "wemy--shd5039-53335432713-o",
-          "wemy--shd5063-53334317492-o",
-          "wemy--shd5090-53335534944-o",
-          "wemy--shd5124-53334317237-o",
-          "koolboks--shd5688-53335563384-o",
-          "koolboks--shd5723-53335562759-o",
-          "koolboks--shd5761-53335225221-o",
-          "taeillio--shd5484-53335673175-o",
-          "taeillio--shd5546-53335213246-o",
-          "taeillio--shd5596-53335449163-o"
+          "east-africa--mastercard-kenya-portraits0104",
+          "east-africa--mastercard-uganda-forma-foods-portraits0030-54037328"
         ],
         "beats": [
           {
