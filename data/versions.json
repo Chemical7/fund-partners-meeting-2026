@@ -46,9 +46,7 @@
             "eyebrow": "2022, The Design",
             "title": "Designing a different system.",
             "subtitle": "African-led investment vehicles. Embedded capital. An ecosystem-first approach. The architecture was deliberate: those closest to the problem are closest to the solution.",
-            "gallery": [
-              "fund-launch--fund-launch-aruwa-capital"
-            ]
+            "gallery": null
           },
           {
             "type": "chapter",
@@ -69,7 +67,7 @@
       {
         "id": "build-2023",
         "year": "2023",
-        "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits000",
+        "heroImage": "wemy--shd5063-53334317492-o",
         "imageRefs": [
           "east-africa--mastercard-uganda-equator-chocolate-portraits000-2",
           "east-africa--mastercard-uganda-forma-foods-portraits0003-5403",
@@ -82,9 +80,6 @@
             "title": "From idea to infrastructure.",
             "subtitle": "The system takes shape. First investment vehicles activated. First portfolio companies funded.",
             "gallery": [
-              "east-africa--mastercard-uganda-equator-chocolate-portraits000-2",
-              "east-africa--mastercard-uganda-forma-foods-portraits0003-5403",
-              "east-africa--mastercard-uganda-forma-foods-portraits0024-5403",
               "east-africa--mastercard-uganda-forma-foods-portraits0025-5403"
             ]
           },
@@ -93,7 +88,7 @@
             "eyebrow": "2023, The Learning",
             "title": "Capital alone is not enough.",
             "subtitle": "Capability matters. Ecosystems need coordination. The early evidence taught the Fund that deployment without support infrastructure produces fragile outcomes.",
-            "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits000-2"
+            "heroImage": null
           }
         ]
       },
@@ -111,11 +106,7 @@
             "eyebrow": "2024, The Inflection",
             "title": "The system starts to move.",
             "subtitle": "The portfolio is no longer a set of bets. It is a body of evidence. Relationships built. Partnerships activated.",
-            "gallery": [
-              "east-africa--mastercard-kenya-portraits0051",
-              "east-africa--mastercard-kenya-portraits0056",
-              "east-africa--mastercard-kenya-portraits0013"
-            ]
+            "gallery": null
           },
           {
             "type": "chapter",
@@ -139,7 +130,6 @@
         "heroImage": "portfolio-new--shd5002-53514937125-o",
         "imageRefs": [
           "wemy--shd5039-53335432713-o",
-          "wemy--shd5063-53334317492-o",
           "wemy--shd5090-53335534944-o",
           "wemy--shd5124-53334317237-o",
           "koolboks--shd5688-53335563384-o",
@@ -156,12 +146,7 @@
             "title": "Human stories. Real numbers.",
             "subtitle": "VIVO Activewear in Kenya. Yikodeen in Nigeria. Grace Mumbi's workforce transformation. Proof of system change.",
             "gallery": [
-              "agroeknor--amina-01",
-              "wemy--shd5090-53335534944-o",
-              "koolboks--shd5688-53335563384-o",
-              "portfolio-new--shd5029-53514672828-o",
-              "portfolio-new--shd5245-53514937110-o",
-              "portfolio-new--shd4983-53513614582-o"
+              "agroeknor--amina-01"
             ]
           },
           {
@@ -196,7 +181,6 @@
             "gallery": [
               "taeillio--shd5484-53335673175-o",
               "taeillio--shd5546-53335213246-o",
-              "koolboks--shd5723-53335562759-o",
               "taeillio--shd5596-53335449163-o"
             ]
           }
@@ -214,10 +198,7 @@
         "id": "now-2025",
         "year": "Now",
         "heroImage": "tomato-jos--20250424-131258",
-        "imageRefs": [
-          "kazana--dsc03164-1-54037292014-o",
-          "kazana--dsc03190-1-54037292029-o"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
@@ -254,9 +235,8 @@
       {
         "id": "future",
         "year": "Future",
-        "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0025-5403",
+        "heroImage": "portfolio-new--shd5676-53513614532-o",
         "imageRefs": [
-          "east-africa--mastercard-uganda-forma-foods-portraits0027-5403",
           "east-africa--mastercard-uganda-inua-capital-portraits0009-540"
         ],
         "beats": [
@@ -265,12 +245,7 @@
             "eyebrow": "2025 to 2027, The Future",
             "title": "Scaling capital. Scaling influence.",
             "subtitle": "ATI Capital Shift as a content engine. The Fund Podcast as a convening platform.",
-            "gallery": [
-              "east-africa--mastercard-uganda-forma-foods-portraits0027-5403",
-              "east-africa--mastercard-uganda-inua-capital-portraits0009-540",
-              "agroeknor--amina-01",
-              "agroeknor--amina-02"
-            ]
+            "gallery": null
           },
           {
             "type": "chapter",
@@ -358,10 +333,6 @@
             "title": "This is proximity, not content production.",
             "subtitle": "We have been in the field. Ethiopia, Ghana, across East and West Africa. Capturing evidence that turns success stories into proof points.",
             "gallery": [
-              "east-africa--mastercard-kenya-portraits0002",
-              "east-africa--mastercard-kenya-portraits0016",
-              "east-africa--mastercard-kenya-portraits0025",
-              "east-africa--mastercard-kenya-portraits0088",
               "east-africa--mastercard-kenya-portraits0086-east-africa-video",
               "east-africa--mastercard-kenya-portraits0002-joyce-ann-chui-ventur"
             ]
@@ -418,9 +389,8 @@
       },
       {
         "id": "impact",
-        "heroImage": "east-africa--mastercard-kenya-portraits0086-east-africa-video",
+        "heroImage": "east-africa--mastercard-kenya-portraits0104",
         "imageRefs": [
-          "east-africa--mastercard-kenya-portraits0104",
           "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54"
         ],
         "beats": [
@@ -470,12 +440,7 @@
             "eyebrow": "C, Coordination",
             "title": "Behind every story is a system.",
             "subtitle": "Portfolio intelligence. Daily ecosystem signals. Content pipelines. Partner coordination. Six months ago, this was ad hoc. Today, it is systematic.",
-            "gallery": [
-              "avpa-2025--rita-odero-avpa-2025",
-              "superreturn--cape-town-sr-side-event-2",
-              "superreturn--cape-town-sr-side-event",
-              "avpa-2025--attendees-avpa-2025"
-            ]
+            "gallery": null
           },
           {
             "type": "chapter",
@@ -499,11 +464,7 @@
             "eyebrow": "C, Coalitions",
             "title": "The Fund is a coalition. Our role is to help it act like one.",
             "subtitle": "Aligning messaging across partners. Amplifying shared moments.",
-            "gallery": [
-              "roundtables--mg-0414",
-              "roundtables--img-9002",
-              "roundtables--nigeria-round-table"
-            ]
+            "gallery": null
           },
           {
             "type": "chapter",
@@ -540,7 +501,6 @@
         "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0005-54037454",
         "imageRefs": [
           "east-africa--mastercard-uganda-forma-foods-portraits0030-54037328",
-          "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54",
           "portfolio-new--shd5660-53514498171-o",
           "portfolio-new--shd5676-53513614532-o"
         ]
@@ -548,12 +508,7 @@
       {
         "id": "close",
         "heroImage": "avpa-2025--brand-logo",
-        "imageRefs": [
-          "portfolio-new--shd5660-53514498171-o",
-          "portfolio-new--shd5676-53513614532-o",
-          "east-africa--mastercard-kenya-portraits0104",
-          "east-africa--mastercard-uganda-forma-foods-portraits0030-54037328"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
