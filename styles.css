@@ -460,23 +460,22 @@ h1, h2, h3, h4 {
 #cover-mark.gone { opacity: 0; }
 .cover-mark-card {
   background: white;
-  padding: clamp(32px, 4vh, 56px) clamp(36px, 3.5vw, 64px);
+  padding: 5vh 4vw 4vh;
   border-radius: 0 0 24px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(14px, 2vh, 24px);
-  min-width: clamp(240px, 26vw, 420px);
-  min-height: clamp(160px, 26vh, 300px);
+  gap: 2.5vh;
+  width: 28vw;
 }
 .mcf-logo {
   display: block;
-  height: clamp(64px, 9vh, 100px);
+  height: 14vh;
   width: auto;
 }
 .cover-mark-main {
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-size: 2.2vw;
   font-weight: 600;
   line-height: 1.2;
   color: #00905D;
