@@ -69,7 +69,7 @@ h1, h2, h3, h4 {
   position: relative;
   display: flex;
   align-items: flex-end;
-  padding: 80px 72px 48px;
+  padding: 80px 72px 72px;
   overflow: hidden;
 }
 .slide::before {
