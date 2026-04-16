@@ -364,6 +364,7 @@ h1, h2, h3, h4 {
 
 .eyebrow {
   display: inline-block;
+  align-self: flex-start;
   font-family: 'Poppins', Arial, sans-serif;
   font-size: 0.72rem;
   color: var(--yellow);
