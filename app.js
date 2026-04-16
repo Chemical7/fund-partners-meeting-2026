@@ -348,21 +348,18 @@ function setupObserver(version) {
         dock.classList.remove('fullscreen');
       }
 
-      // Brand mark: full logo on cover, pinned hashtag everywhere else.
-      // Fund pattern strip goes slightly brighter on the cover.
+      // Brand mark + ticker: cover shows logo panel, inner slides show hashtag + ticker
       const coverMark = document.getElementById('cover-mark');
       const pinnedMark = document.getElementById('pinned-mark');
-      const patternDeco = document.getElementById('fund-pattern-deco');
-      if (coverMark && pinnedMark) {
-        if (type === 'cover') {
-          coverMark.classList.remove('gone');
-          pinnedMark.classList.remove('visible');
-          if (patternDeco) patternDeco.classList.add('cover-visible');
-        } else {
-          coverMark.classList.add('gone');
-          pinnedMark.classList.add('visible');
-          if (patternDeco) patternDeco.classList.remove('cover-visible');
-        }
+      const ticker = document.getElementById('ticker');
+      if (type === 'cover') {
+        if (coverMark) coverMark.classList.remove('gone');
+        if (pinnedMark) pinnedMark.classList.remove('visible');
+        if (ticker) ticker.classList.remove('visible');
+      } else {
+        if (coverMark) coverMark.classList.add('gone');
+        if (pinnedMark) pinnedMark.classList.add('visible');
+        if (ticker) ticker.classList.add('visible');
       }
 
       // Progress bar + timeline year

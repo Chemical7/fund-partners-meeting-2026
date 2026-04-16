@@ -112,28 +112,9 @@ h1, h2, h3, h4 {
   padding: 80px;
   gap: 0;
 }
-/* Yellow accent block, left side */
-.slide[data-type="cover"]::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 36%;
-  width: clamp(40px, 4.5vw, 72px);
-  height: 18%;
-  background: #FBB500;
-  border-radius: 0 16px 16px 0;
-  z-index: 3;
-}
-/* Grey accent block, top-right */
-.cover-grey-block {
-  position: absolute;
-  top: 0; right: 0;
-  width: clamp(160px, 18vw, 280px);
-  height: clamp(100px, 14vh, 180px);
-  background: #C8C8C2;
-  border-radius: 0 0 0 24px;
-  z-index: 1;
-}
+/* Accent blocks removed for clean layout */
+.slide[data-type="cover"]::after { display: none; }
+.cover-grey-block { display: none; }
 /* Cover title */
 .cover-title-area {
   color: white;
@@ -466,7 +447,7 @@ h1, h2, h3, h4 {
 .beat-dots { display: none; }
 .beat-hint { display: none; }
 
-/* ===== BRAND MARK ===== */
+/* ===== BRAND MARK (cover: white panel top-left, inner slides: pinned hashtag) ===== */
 #cover-mark {
   position: fixed;
   top: 0;
@@ -474,70 +455,56 @@ h1, h2, h3, h4 {
   z-index: 300;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
-  transform-origin: top left;
+  transition: opacity 0.7s ease;
 }
-#cover-mark.gone {
-  opacity: 0;
-  transform: scale(0.88);
-}
+#cover-mark.gone { opacity: 0; }
 .cover-mark-card {
   background: white;
-  padding: clamp(28px, 3.5vh, 48px) clamp(32px, 3vw, 56px);
+  padding: clamp(32px, 4vh, 56px) clamp(36px, 3.5vw, 64px);
   border-radius: 0 0 24px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(16px, 2vh, 28px);
-  min-width: clamp(200px, 22vw, 360px);
+  gap: clamp(14px, 2vh, 24px);
+  min-width: clamp(240px, 26vw, 420px);
+  min-height: clamp(160px, 26vh, 300px);
 }
 .mcf-logo {
   display: block;
-  height: clamp(70px, 10vh, 110px);
+  height: clamp(64px, 9vh, 100px);
   width: auto;
 }
 .cover-mark-main {
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #00905D;
-  letter-spacing: -0.01em;
 }
 
 #pinned-mark {
   position: fixed;
-  top: 20px;
-  left: 24px;
+  top: 18px;
+  left: 22px;
   z-index: 300;
   pointer-events: none;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 7px 14px 7px 8px;
-  background: rgba(255, 255, 255, 0.94);
-  border-radius: 999px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  gap: 10px;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.65s ease 0.15s, transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  transition: opacity 0.5s ease;
 }
-#pinned-mark.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+#pinned-mark.visible { opacity: 1; }
 .pinned-logo {
-  height: 26px;
+  height: 24px;
   width: auto;
   display: block;
 }
 .pinned-hashtag {
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--green);
-  letter-spacing: -0.01em;
-  padding-right: 4px;
+  color: white;
 }
 
 /* Fund pattern strip hidden — only shows on cover via ::before */
@@ -578,23 +545,23 @@ h1, h2, h3, h4 {
   color: var(--bg-deep);
 }
 
-/* ===== LINKEDIN TICKER ===== */
+/* ===== LINKEDIN TICKER (no bg, hidden on cover) ===== */
 #ticker {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 24px;
   z-index: 250;
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(10,20,16,0.88);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 999px;
-  padding: 8px 18px 8px 10px;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
   font-family: 'Poppins', Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
+#ticker.visible { opacity: 1; }
 .ticker-icon {
   width: 26px; height: 26px;
   background: #0A66C2;
