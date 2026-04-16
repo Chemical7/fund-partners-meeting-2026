@@ -29,7 +29,8 @@
             "eyebrow": "The model",
             "title": "A layered system.",
             "subtitle": "Capital does not flow directly. It flows through layers, each with a distinct role in the ecosystem.",
-            "diagram": "<div class='diagram-flow'><div class='flow-node'><div class='flow-label'>Foundation</div><div class='flow-detail'>Catalyst</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>The Fund</div><div class='flow-detail'>Architect</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>Investment Vehicles</div><div class='flow-detail'>Deployers</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>Portfolio Companies</div><div class='flow-detail'>Impact</div></div></div><div class='flow-overlays'><span class='flow-overlay-tag bds'>BDS</span><span class='flow-overlay-tag gender'>Gender Lens</span><span class='flow-overlay-tag ecosystem'>Ecosystem Support</span></div>"
+            "diagram": "<div class='diagram-flow'><div class='flow-node'><div class='flow-label'>Foundation</div><div class='flow-detail'>Catalyst</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>The Fund</div><div class='flow-detail'>Architect</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>Investment Vehicles</div><div class='flow-detail'>Deployers</div></div><span class='flow-arrow'>&#8594;</span><div class='flow-node'><div class='flow-label'>Portfolio Companies</div><div class='flow-detail'>Impact</div></div></div><div class='flow-overlays'><span class='flow-overlay-tag bds'>BDS</span><span class='flow-overlay-tag gender'>Gender Lens</span><span class='flow-overlay-tag ecosystem'>Ecosystem Support</span></div>",
+            "heroImage": "aruwa--adesuwa-okunbo-rhodes-1d5a8294"
           }
         ]
       },
@@ -37,9 +38,7 @@
         "id": "design-2022",
         "year": "2022",
         "heroImage": "kazana--dsc03164-1-54037292014-o",
-        "imageRefs": [
-          "fund-launch--fund-launch-aruwa-capital"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
@@ -52,7 +51,8 @@
             "type": "chapter",
             "eyebrow": "2022, The Philosophy",
             "title": "Those closest to the problem are closest to the solution.",
-            "subtitle": "Not distant capital allocation, but proximate capital engineering. Fund managers who live in the markets they serve, building companies they understand."
+            "subtitle": "Not distant capital allocation, but proximate capital engineering. Fund managers who live in the markets they serve, building companies they understand.",
+            "heroImage": "fund-launch--fund-launch-aruwa-capital"
           }
         ]
       },
@@ -69,7 +69,6 @@
         "year": "2023",
         "heroImage": "wemy--shd5063-53334317492-o",
         "imageRefs": [
-          "east-africa--mastercard-uganda-equator-chocolate-portraits000-2",
           "east-africa--mastercard-uganda-forma-foods-portraits0003-5403",
           "east-africa--mastercard-uganda-forma-foods-portraits0024-5403"
         ],
@@ -88,7 +87,7 @@
             "eyebrow": "2023, The Learning",
             "title": "Capital alone is not enough.",
             "subtitle": "Capability matters. Ecosystems need coordination. The early evidence taught the Fund that deployment without support infrastructure produces fragile outcomes.",
-            "heroImage": null
+            "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits000-2"
           }
         ]
       },
@@ -97,7 +96,6 @@
         "year": "2024",
         "heroImage": "east-africa--mastercard-kenya-portraits0019",
         "imageRefs": [
-          "east-africa--mastercard-kenya-portraits0051",
           "east-africa--mastercard-kenya-portraits0056"
         ],
         "beats": [
@@ -112,7 +110,8 @@
             "type": "chapter",
             "eyebrow": "2024, The Shift",
             "title": "From building to scaling.",
-            "subtitle": "The infrastructure is in place. The question is no longer whether it works. It is how far it can reach."
+            "subtitle": "The infrastructure is in place. The question is no longer whether it works. It is how far it can reach.",
+            "heroImage": "east-africa--mastercard-kenya-portraits0051"
           }
         ]
       },
@@ -129,8 +128,6 @@
         "year": "2025",
         "heroImage": "portfolio-new--shd5002-53514937125-o",
         "imageRefs": [
-          "wemy--shd5039-53335432713-o",
-          "wemy--shd5090-53335534944-o",
           "wemy--shd5124-53334317237-o",
           "koolboks--shd5688-53335563384-o",
           "koolboks--shd5723-53335562759-o",
@@ -171,7 +168,8 @@
                 "value": "22x",
                 "label": "Revenue multiple"
               }
-            ]
+            ],
+            "heroImage": "wemy--shd5039-53335432713-o"
           },
           {
             "type": "chapter",
@@ -182,7 +180,8 @@
               "taeillio--shd5484-53335673175-o",
               "taeillio--shd5546-53335213246-o",
               "taeillio--shd5596-53335449163-o"
-            ]
+            ],
+            "heroImage": "wemy--shd5090-53335534944-o"
           }
         ]
       },
@@ -228,7 +227,8 @@
                 "value": "4",
                 "label": "Ecosystem leverage"
               }
-            ]
+            ],
+            "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits000"
           }
         ]
       },
@@ -236,9 +236,7 @@
         "id": "future",
         "year": "Future",
         "heroImage": "portfolio-new--shd5676-53513614532-o",
-        "imageRefs": [
-          "east-africa--mastercard-uganda-inua-capital-portraits0009-540"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
@@ -251,7 +249,8 @@
             "type": "chapter",
             "eyebrow": "The Legacy",
             "title": "Redesigning how capital works in Africa.",
-            "subtitle": "If this is what five years built, what do the next five years build?"
+            "subtitle": "If this is what five years built, what do the next five years build?",
+            "heroImage": "east-africa--mastercard-uganda-inua-capital-portraits0009-540"
           }
         ]
       },
@@ -282,7 +281,6 @@
         "id": "intro",
         "heroImage": "avpa-2025--fund-comms-team-2025",
         "imageRefs": [
-          "avpa-2025--attendees-avpa-2025",
           "avpa-2025--food4-dinner-24"
         ],
         "beats": [
@@ -314,7 +312,8 @@
                 "value": "CC",
                 "label": "Coordination + Coalitions"
               }
-            ]
+            ],
+            "heroImage": "avpa-2025--attendees-avpa-2025"
           }
         ]
       },
@@ -322,7 +321,6 @@
         "id": "storytelling",
         "heroImage": "east-africa--mastercard-kenya-portraits0002",
         "imageRefs": [
-          "east-africa--mastercard-kenya-portraits0016",
           "east-africa--mastercard-kenya-portraits0025",
           "east-africa--mastercard-kenya-portraits0088"
         ],
@@ -359,16 +357,15 @@
                 "value": "36",
                 "label": "Field stories captured"
               }
-            ]
+            ],
+            "heroImage": "east-africa--mastercard-kenya-portraits0016"
           }
         ]
       },
       {
         "id": "thought-leadership",
         "heroImage": "aruwa--aruwa-capital-press-release",
-        "imageRefs": [
-          "weave--weave-capital"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
@@ -383,16 +380,15 @@
             "subtitle": "Fund domiciliation as a continental priority. Gender-lens investing as a growth driver. African-led capital as a structural shift.",
             "diagram": "<div class='progression'><div class='progression-step past'>Participant</div><div class='progression-arrow'>&#8594;</div><div class='progression-step past'>Contributor</div><div class='progression-arrow'>&#8594;</div><div class='progression-step current'>Agenda-setter</div></div>",
             "quote": "Through Tier-1 media like CNBC Africa, recognition from the Foundation, and amplification across partner networks. The Fund is no longer just contributing to the conversation. It is shaping it.",
-            "quoteBy": "STICC+ narrative"
+            "quoteBy": "STICC+ narrative",
+            "heroImage": "weave--weave-capital"
           }
         ]
       },
       {
         "id": "impact",
         "heroImage": "east-africa--mastercard-kenya-portraits0104",
-        "imageRefs": [
-          "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54"
-        ],
+        "imageRefs": [],
         "beats": [
           {
             "type": "chapter",
@@ -422,7 +418,8 @@
                 "value": "51.9%",
                 "label": "Peak post ER"
               }
-            ]
+            ],
+            "heroImage": "east-africa--mastercard-uganda-equator-chocolate-portraits0010-54"
           }
         ]
       },
@@ -430,7 +427,6 @@
         "id": "coordination",
         "heroImage": "avpa-2025--fund-comms-team-avpa-2025",
         "imageRefs": [
-          "avpa-2025--rita-odero-avpa-2025",
           "superreturn--cape-town-sr-side-event-2",
           "superreturn--cape-town-sr-side-event"
         ],
@@ -446,7 +442,8 @@
             "type": "chapter",
             "eyebrow": "C, Coordination, the infrastructure",
             "title": "We do not react to opportunities. We anticipate them.",
-            "subtitle": "Every story, every campaign, every proof point flows through this system."
+            "subtitle": "Every story, every campaign, every proof point flows through this system.",
+            "heroImage": "avpa-2025--rita-odero-avpa-2025"
           }
         ]
       },
@@ -454,7 +451,6 @@
         "id": "coalitions",
         "heroImage": "roundtables--mg-0272",
         "imageRefs": [
-          "roundtables--mg-0414",
           "roundtables--img-9002",
           "roundtables--nigeria-round-table"
         ],
@@ -488,7 +484,8 @@
                 "value": "30.3%",
                 "label": "Lead post ER"
               }
-            ]
+            ],
+            "heroImage": "roundtables--mg-0414"
           }
         ]
       },
@@ -520,7 +517,8 @@
             "type": "final",
             "eyebrow": "The question",
             "title": "If this is what six months built, what should the next six months build?",
-            "subtitle": ""
+            "subtitle": "",
+            "heroImage": "east-africa--mastercard-uganda-forma-foods-portraits0030-54037328"
           }
         ]
       }
