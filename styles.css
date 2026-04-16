@@ -579,13 +579,15 @@ h1, h2, h3, h4 {
 /* Fund pattern strip hidden — only shows on cover via ::before */
 #fund-pattern-deco { display: none; }
 
-/* ===== TABS ===== */
+/* ===== TABS (hidden, keyboard-only: press 1 or 2) ===== */
 #tabs {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 250;
+  opacity: 0;
+  pointer-events: none;
   display: flex;
   gap: 4px;
   padding: 5px;
