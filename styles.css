@@ -113,8 +113,18 @@ h1, h2, h3, h4 {
   padding: 80px;
   gap: 0;
 }
-/* Accent blocks removed for clean layout */
-.slide[data-type="cover"]::after { display: none; }
+/* Yellow accent block, left side */
+.slide[data-type="cover"]::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 38%;
+  width: clamp(36px, 4vw, 64px);
+  height: 16%;
+  background: #FBB500;
+  border-radius: 0 14px 14px 0;
+  z-index: 3;
+}
 .cover-grey-block { display: none; }
 /* Cover title */
 .cover-title-area {
