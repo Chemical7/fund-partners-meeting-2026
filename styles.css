@@ -68,8 +68,8 @@ h1, h2, h3, h4 {
   scroll-snap-align: start;
   position: relative;
   display: flex;
-  align-items: center;
-  padding: 80px 72px 60px;
+  align-items: flex-end;
+  padding: 80px 72px 48px;
   overflow: hidden;
 }
 .slide::before {
@@ -77,10 +77,11 @@ h1, h2, h3, h4 {
   position: absolute; inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10,20,16,0.35) 0%,
-    rgba(10,20,16,0.18) 30%,
-    rgba(10,20,16,0.80) 75%,
-    rgba(10,20,16,0.96) 100%
+    rgba(10,20,16,0.55) 0%,
+    rgba(10,20,16,0.40) 25%,
+    rgba(10,20,16,0.75) 55%,
+    rgba(10,20,16,0.92) 80%,
+    rgba(10,20,16,0.98) 100%
   );
   pointer-events: none;
 }
@@ -293,35 +294,35 @@ h1, h2, h3, h4 {
 /* Timeline bar hidden — clean presentation */
 #timeline-bar { display: none; }
 
-/* ===== IMAGE GALLERY (tiled grid inside slides) ===== */
+/* ===== IMAGE GALLERY (tiled grid, positioned at bottom of slide) ===== */
 .gallery {
   display: grid;
   gap: 6px;
-  margin-top: 22px;
+  margin-top: 16px;
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
 }
 .gallery.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .gallery.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
 .gallery img {
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 4px;
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .slide.visible .gallery img {
   opacity: 1;
   transform: scale(1);
 }
-.slide.visible .gallery img:nth-child(2) { transition-delay: 0.08s; }
-.slide.visible .gallery img:nth-child(3) { transition-delay: 0.16s; }
-.slide.visible .gallery img:nth-child(4) { transition-delay: 0.24s; }
-.slide.visible .gallery img:nth-child(5) { transition-delay: 0.32s; }
-.slide.visible .gallery img:nth-child(6) { transition-delay: 0.40s; }
+.slide.visible .gallery img:nth-child(2) { transition-delay: 0.06s; }
+.slide.visible .gallery img:nth-child(3) { transition-delay: 0.12s; }
+.slide.visible .gallery img:nth-child(4) { transition-delay: 0.18s; }
+.slide.visible .gallery img:nth-child(5) { transition-delay: 0.24s; }
+.slide.visible .gallery img:nth-child(6) { transition-delay: 0.30s; }
 
 /* Simple Africa map outline (SVG styled) */
 .africa-map-wrap {
@@ -339,6 +340,8 @@ h1, h2, h3, h4 {
 
 .slide-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   z-index: 2;
   max-width: 960px;
   opacity: 0;
