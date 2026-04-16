@@ -68,8 +68,8 @@ h1, h2, h3, h4 {
   scroll-snap-align: start;
   position: relative;
   display: flex;
-  align-items: flex-end;
-  padding: 72px 72px calc(var(--dock-h) + 48px);
+  align-items: center;
+  padding: 80px 72px 60px;
   overflow: hidden;
 }
 .slide::before {
