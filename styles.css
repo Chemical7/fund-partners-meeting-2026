@@ -55,6 +55,7 @@ h1, h2, h3, h4 {
 
 #scroller {
   height: 100vh;
+  height: 100dvh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -65,11 +66,12 @@ h1, h2, h3, h4 {
 .slide {
   min-height: 100vh;
   height: 100vh;
+  height: 100dvh;
   scroll-snap-align: start;
   position: relative;
   display: flex;
   align-items: flex-end;
-  padding: 80px 72px 72px;
+  padding: clamp(40px, 8vh, 80px) clamp(24px, 5vw, 72px) clamp(40px, 7vh, 72px);
   overflow: hidden;
 }
 .slide::before {
@@ -110,7 +112,7 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px;
+  padding: clamp(40px, 8vh, 80px);
   gap: 0;
 }
 /* Yellow accent block, left side */
@@ -545,7 +547,7 @@ h1, h2, h3, h4 {
 }
 .cover-mark-main {
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 1.25vw;
+  font-size: clamp(0.85rem, 1.25vw, 1.15rem);
   font-weight: 600;
   line-height: 1.25;
   color: #00905D;
@@ -579,15 +581,13 @@ h1, h2, h3, h4 {
 /* Fund pattern strip hidden — only shows on cover via ::before */
 #fund-pattern-deco { display: none; }
 
-/* ===== TABS (hidden, keyboard-only: press 1 or 2) ===== */
+/* ===== TABS ===== */
 #tabs {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 250;
-  opacity: 0;
-  pointer-events: none;
   display: flex;
   gap: 4px;
   padding: 5px;
@@ -800,4 +800,50 @@ h1, h2, h3, h4 {
   #tabs { top: auto; bottom: calc(var(--dock-h) + 60px); }
   #ticker { top: 14px; left: 14px; padding: 6px 14px 6px 8px; }
   .ticker-num { font-size: 0.9rem; }
+}
+
+/* ===== SHORT VIEWPORTS ===== */
+@media (max-height: 700px) {
+  .slide { padding: clamp(28px, 5vh, 48px) clamp(24px, 4vw, 56px) clamp(28px, 5vh, 48px); }
+  .slide h2 { font-size: clamp(1.3rem, 3vw, 2.2rem); margin-bottom: 10px; }
+  .slide p.lede { font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  .stat-row { gap: 12px; margin-top: 16px; }
+  .stat { padding: 14px 18px; }
+  .stat .val { font-size: clamp(1.4rem, 2.2vw, 2rem); }
+  .gallery { max-height: 18vh; }
+  .gallery img { max-height: 18vh; }
+  .quote { margin-top: 14px; padding: 12px 16px; font-size: clamp(0.82rem, 1.1vw, 0.95rem); }
+  .diagram-flow { margin-top: 18px; }
+  .flow-node { padding: 12px 16px; min-width: 110px; }
+  .eyebrow { margin-bottom: 8px; font-size: 0.65rem; }
+}
+
+@media (max-height: 600px) {
+  .slide { padding: clamp(20px, 4vh, 36px) clamp(20px, 3vw, 40px) clamp(20px, 4vh, 36px); }
+  .slide h2 { font-size: clamp(1.15rem, 2.5vw, 1.8rem); margin-bottom: 8px; }
+  .slide p.lede { font-size: clamp(0.75rem, 1vw, 0.9rem); }
+  .stat-row { gap: 8px; margin-top: 12px; }
+  .stat { padding: 10px 14px; border-radius: 10px; }
+  .stat .val { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+  .stat .lbl { font-size: 0.6rem; margin-top: 4px; }
+  .gallery { max-height: 15vh; }
+  .gallery img { max-height: 15vh; }
+  .quote { display: none; }
+  #timeline-bar { top: 48px; }
+  .cover-mark-card { padding: 2vh 2vw 2.2vh; }
+  .mcf-logo { height: 7vh; }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+  }
+  html { scroll-behavior: auto; }
+  .bg-layer { transition-duration: 0.01ms !important; }
+  .slide-content { transition-duration: 0.01ms !important; }
+  .gallery img { transition-duration: 0.01ms !important; }
+  #dock.fullscreen .tile { animation: none; opacity: 1; transform: none; }
 }
