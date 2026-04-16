@@ -364,6 +364,7 @@ function setupObserver(version) {
         if (pinnedMark) pinnedMark.classList.add('visible');
         if (ticker) ticker.classList.add('visible');
         if (tabs) tabs.classList.remove('cover-hidden');
+        if (tlBar) tlBar.classList.add('visible');
       }
 
       // Progress bar + timeline year
