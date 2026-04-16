@@ -602,22 +602,7 @@ h1, h2, h3, h4 {
 #slide-counter { display: none; }
 
 /* ===== DOCK ===== */
-#dock {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  height: var(--dock-h);
-  z-index: 50;
-  padding: 12px 20px;
-  background: linear-gradient(to top,
-    rgba(10,20,16,0.98) 0%,
-    rgba(10,20,16,0.85) 60%,
-    rgba(10,20,16,0) 100%);
-  display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 5px;
-  transition: all 0.9s cubic-bezier(0.65, 0, 0.35, 1);
-}
+#dock { display: none; }
 #dock.hidden {
   opacity: 0;
   pointer-events: none;
