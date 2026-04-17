@@ -14,9 +14,93 @@
   --green-soft: #2EDB85;
   --yellow: #FFC72C;
   --yellow-soft: #FFD55C;
+  --accent: var(--yellow);
   --card: rgba(255, 255, 255, 0.055);
   --border: rgba(255, 255, 255, 0.14);
+  --display-font: 'Poppins', Arial, sans-serif;
   --dock-h: 13vh;
+}
+
+/* ===== ACG THEME: editorial newsroom, warm dark, orange accent ===== */
+body.theme-acg {
+  --bg: #150D0A;
+  --bg-alt: #1F1510;
+  --bg-deep: #0A0604;
+  --text: #F5F0EB;
+  --text-dim: #A89C91;
+  --green: #00905D;
+  --green-soft: #2EAA7D;
+  --yellow: #FBB500;
+  --yellow-soft: #FFCB3A;
+  --accent: #FF6C05;
+  --card: rgba(255, 108, 5, 0.06);
+  --border: rgba(245, 240, 235, 0.14);
+  --display-font: 'Fraunces', 'Poppins', Georgia, serif;
+}
+body.theme-acg h1, body.theme-acg h2, body.theme-acg h3 {
+  font-family: var(--display-font);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+body.theme-acg .slide[data-type="pause"] h2 {
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* ACG cover: dark editorial, no Fund template elements */
+body.theme-acg .slide[data-type="cover"] {
+  background: var(--bg);
+  align-items: center;
+  justify-content: center;
+}
+body.theme-acg .slide[data-type="cover"]::before {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(255,108,5,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(251,181,0,0.08) 0%, transparent 55%),
+    var(--bg);
+  background-image: none;
+}
+body.theme-acg .slide[data-type="cover"]::after { display: none; }
+body.theme-acg .cover-partners {
+  background: var(--bg-alt);
+  color: var(--text-dim);
+}
+body.theme-acg .cover-partners .partners-label { color: var(--text-dim); }
+body.theme-acg .cover-partners .partner-name { color: var(--text); }
+body.theme-acg .cover-title-area { display: none; }
+
+/* ACG accents across slides */
+body.theme-acg .eyebrow {
+  color: var(--accent);
+  border-color: rgba(255,108,5,0.35);
+  background: rgba(255,108,5,0.08);
+}
+body.theme-acg .stat::before {
+  background: linear-gradient(90deg, var(--accent), var(--yellow));
+}
+body.theme-acg .stat .val { color: var(--accent); font-family: var(--display-font); }
+body.theme-acg .quote { border-left-color: var(--accent); }
+body.theme-acg .tab-btn.active { background: var(--accent); color: var(--bg-deep); }
+body.theme-acg #timeline-bar { border-color: rgba(255,108,5,0.2); }
+body.theme-acg .tl-year.active { background: var(--accent); color: var(--bg-deep); }
+body.theme-acg .tl-year.past { color: var(--accent); }
+
+/* ACG pause slide styling: more editorial */
+body.theme-acg .slide[data-type="pause"] .slide-content {
+  background: rgba(255,108,5,0.08);
+  border-color: rgba(255,108,5,0.25);
+}
+body.theme-acg .slide[data-type="pause"] .slide-content::before {
+  background: linear-gradient(90deg, var(--accent), var(--yellow));
+}
+body.theme-acg .slide h2 {
+  font-family: var(--display-font);
+}
+body.theme-acg .slide p.lede {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  line-height: 1.45;
 }
 
 html, body {
@@ -577,6 +661,87 @@ h1, h2, h3, h4 {
   font-weight: 700;
   color: white;
 }
+
+/* ===== ACG COVER MARK ===== */
+#acg-cover-mark {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  text-align: center;
+  gap: 24px;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+body.theme-acg #acg-cover-mark { display: flex; }
+#acg-cover-mark.gone { opacity: 0; }
+
+.acg-eyebrow {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.acg-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2px, 0.5vh, 8px);
+  line-height: 0.88;
+}
+.acg-wordmark span {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.acg-wordmark span:nth-child(2) {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.acg-tagline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+  font-weight: 400;
+  color: var(--text-dim);
+  max-width: 540px;
+  margin-top: 18px;
+}
+
+#acg-pinned-mark {
+  position: fixed;
+  top: 22px;
+  left: 28px;
+  z-index: 300;
+  pointer-events: none;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: none;
+}
+body.theme-acg #acg-pinned-mark { display: block; }
+body.theme-acg #acg-pinned-mark.visible { opacity: 1; }
+
+/* Hide Fund marks when on ACG theme */
+body.theme-acg #cover-mark,
+body.theme-acg #pinned-mark { display: none; }
 
 /* Fund pattern strip hidden — only shows on cover via ::before */
 #fund-pattern-deco { display: none; }

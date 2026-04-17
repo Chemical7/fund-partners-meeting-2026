@@ -357,21 +357,27 @@ function setupObserver(version) {
         dock.classList.remove('fullscreen');
       }
 
-      // Cover: show logo panel only. Inner slides: show hashtag, ticker, tabs, timeline
+      // Cover shows the tab's own mark. Inner slides show the pinned version.
       const coverMark = document.getElementById('cover-mark');
       const pinnedMark = document.getElementById('pinned-mark');
+      const acgCoverMark = document.getElementById('acg-cover-mark');
+      const acgPinnedMark = document.getElementById('acg-pinned-mark');
       const ticker = document.getElementById('ticker');
       const tabs = document.getElementById('tabs');
       const tlBar = document.getElementById('timeline-bar');
       if (type === 'cover') {
         if (coverMark) coverMark.classList.remove('gone');
         if (pinnedMark) pinnedMark.classList.remove('visible');
+        if (acgCoverMark) acgCoverMark.classList.remove('gone');
+        if (acgPinnedMark) acgPinnedMark.classList.remove('visible');
         if (ticker) ticker.classList.remove('visible');
         if (tabs) tabs.classList.add('cover-hidden');
         if (tlBar) tlBar.classList.remove('visible');
       } else {
         if (coverMark) coverMark.classList.add('gone');
         if (pinnedMark) pinnedMark.classList.add('visible');
+        if (acgCoverMark) acgCoverMark.classList.add('gone');
+        if (acgPinnedMark) acgPinnedMark.classList.add('visible');
         if (ticker) ticker.classList.add('visible');
         if (tabs) tabs.classList.remove('cover-hidden');
         if (tlBar) tlBar.classList.add('visible');
@@ -392,6 +398,9 @@ function render(versionKey) {
   const version = state.versions[versionKey];
   if (!version) return;
   state.version = versionKey;
+
+  // Apply theme: ACG tab gets editorial dark theme, Journey tab keeps Fund green
+  document.body.classList.toggle('theme-acg', versionKey === 'acg');
 
   const flatSlides = expandSlides(version);
   const tileOrder = buildTileOrder(flatSlides);
