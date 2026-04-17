@@ -522,6 +522,45 @@ h1, h2, h3, h4 {
   background: rgba(255,199,44,0.06);
 }
 
+/* ===== STICC+ CHAPTER MARK =====
+   Huge editorial letter row pinned to the top-left of each pillar slide.
+   Active letter is oversized + accent-coloured; others dim but still large. */
+.sticc-mark {
+  position: absolute;
+  top: clamp(78px, 11vh, 140px);
+  left: clamp(24px, 5vw, 72px);
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(14px, 2vw, 36px);
+  font-family: var(--display-font);
+  line-height: 0.95;
+  pointer-events: none;
+}
+.sticc-letter {
+  color: rgba(255,255,255,0.32);
+  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: color 0.45s ease, font-size 0.45s ease, font-weight 0.45s ease;
+}
+.sticc-letter.active {
+  color: var(--accent);
+  font-size: clamp(8rem, 15vw, 15rem);
+  font-weight: 800;
+  text-shadow: 0 8px 40px rgba(0,0,0,0.45);
+}
+@media (max-width: 900px) {
+  .sticc-mark { top: 64px; gap: 10px; }
+  .sticc-letter { font-size: 1.8rem; }
+  .sticc-letter.active { font-size: 5.5rem; }
+}
+@media (max-height: 700px) {
+  .sticc-mark { top: 60px; }
+  .sticc-letter { font-size: clamp(1.6rem, 3vw, 3rem); }
+  .sticc-letter.active { font-size: clamp(5rem, 10vw, 9rem); }
+}
+
 .slide h1 {
   font-size: clamp(2.25rem, 5.4vw, 4.5rem);
   line-height: 1.02;

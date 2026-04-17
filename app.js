@@ -43,12 +43,26 @@ function imageFileFromRef(ref) {
   return arr.length ? arr[0].file : null;
 }
 
+/* STICC+ chapter map: section id -> index in STICC_LETTERS. Only applied
+   for the acg version (journey has a differently-scoped "future" section). */
+const STICC_LETTERS = ['S', 'T', 'I', 'C', 'C', '+'];
+const STICC_MAP = {
+  'storytelling': 0,
+  'thought-leadership': 1,
+  'impact': 2,
+  'coordination': 3,
+  'coalitions': 4,
+  'future': 5,
+};
+
 /* Expand a version's sections into a flat list of slides.
    A section with a `beats` array becomes N slides, all sharing the same
    heroImage — the text layer changes as the user scrolls through beats. */
-function expandSlides(version) {
+function expandSlides(version, versionKey) {
   const out = [];
   version.sections.forEach(sec => {
+    const sticcIndex = (versionKey === 'acg' && STICC_MAP[sec.id] !== undefined)
+      ? STICC_MAP[sec.id] : null;
     if (Array.isArray(sec.beats) && sec.beats.length) {
       sec.beats.forEach((beat, bIdx) => {
         out.push({
@@ -62,9 +76,11 @@ function expandSlides(version) {
           diagram: beat.diagram || sec.diagram || '',
           gallery: beat.gallery || null,
           heroImage: beat.heroImage || sec.heroImage,
+          heroPosition: beat.heroPosition || sec.heroPosition || null,
           year: beat.year || sec.year || null,
           imageRefs: bIdx === 0 ? (sec.imageRefs || []) : [],
           beat: { index: bIdx, total: sec.beats.length, sectionId: sec.id },
+          sticcIndex,
         });
       });
     } else {
@@ -79,9 +95,11 @@ function expandSlides(version) {
         diagram: sec.diagram || '',
         gallery: sec.gallery || null,
         heroImage: sec.heroImage,
+        heroPosition: sec.heroPosition || null,
         year: sec.year || null,
         imageRefs: sec.imageRefs || [],
         beat: null,
+        sticcIndex,
       });
     }
   });
@@ -144,6 +162,15 @@ function renderDock(tileOrder) {
 
 function renderSlideContent(sec) {
   const eyebrow = sec.eyebrow ? `<div class="eyebrow">${sec.eyebrow}</div>` : '';
+  const sticc = (sec.sticcIndex !== null && sec.sticcIndex !== undefined)
+    ? `<div class="sticc-mark" aria-hidden="true" style="position:absolute;top:clamp(78px,11vh,140px);left:clamp(24px,5vw,72px);z-index:5;display:flex;align-items:baseline;gap:clamp(14px,2vw,36px);font-family:var(--display-font,'Fraunces',serif);line-height:0.95;pointer-events:none;">${STICC_LETTERS.map((l, i) => {
+        const active = i === sec.sticcIndex;
+        const style = active
+          ? 'color:var(--accent,#FF6C05);font-size:clamp(8rem,15vw,15rem);font-weight:800;letter-spacing:-0.02em;text-shadow:0 8px 40px rgba(0,0,0,0.45);'
+          : 'color:rgba(255,255,255,0.32);font-size:clamp(2.8rem,5.5vw,6rem);font-weight:600;letter-spacing:-0.02em;';
+        return `<span class="sticc-letter${active ? ' active' : ''}" style="${style}">${l}</span>`;
+      }).join('')}</div>`
+    : '';
   const stats = (sec.stats || []).map(s =>
     `<div class="stat"><div class="val">${s.value}</div><div class="lbl">${s.label}</div></div>`
   ).join('');
@@ -210,6 +237,7 @@ function renderSlideContent(sec) {
 
   return `
     ${beatDots}
+    ${sticc}
     <div class="slide-content">
       ${eyebrow}
       <h2>${sec.title}</h2>
@@ -234,6 +262,7 @@ function renderSlides(flatSlides) {
     if (sec.year) slide.dataset.year = sec.year;
     const heroUrl = sec.heroImage ? imageFileFromRef(sec.heroImage) : null;
     if (heroUrl) slide.dataset.hero = heroUrl;
+    if (sec.heroPosition) slide.dataset.heroPosition = sec.heroPosition;
     slide.innerHTML = renderSlideContent(sec);
     slides.appendChild(slide);
   });
@@ -283,13 +312,13 @@ function updateTimelineBar(year) {
 const heroBg = {
   activeId: 'bg-a',
   currentUrl: null,
-  set(url) {
+  set(url, position) {
     if (!url || url === this.currentUrl) return;
     const activeEl = document.getElementById(this.activeId);
     const inactiveId = this.activeId === 'bg-a' ? 'bg-b' : 'bg-a';
     const inactiveEl = document.getElementById(inactiveId);
     inactiveEl.style.backgroundImage = `url("${url}")`;
-    // next frame: fade in inactive, fade out active
+    inactiveEl.style.backgroundPosition = position || 'center 30%';
     requestAnimationFrame(() => {
       inactiveEl.classList.add('visible');
       activeEl.classList.remove('visible');
@@ -331,7 +360,7 @@ function setupObserver(version) {
       state.currentSlideIdx = idx;
 
       // Swap hero background (only fires when URL actually changes)
-      if (slide.dataset.hero) heroBg.set(slide.dataset.hero);
+      if (slide.dataset.hero) heroBg.set(slide.dataset.hero, slide.dataset.heroPosition);
 
       // Light tiles for sections 0..idx, unlight those beyond idx.
       // Unlight on reverse scroll so the dock "rewinds" as the user
@@ -402,7 +431,7 @@ function render(versionKey) {
   // Apply theme: ACG tab gets editorial dark theme, Journey tab keeps Fund green
   document.body.classList.toggle('theme-acg', versionKey === 'acg');
 
-  const flatSlides = expandSlides(version);
+  const flatSlides = expandSlides(version, versionKey);
   const tileOrder = buildTileOrder(flatSlides);
   renderDock(tileOrder);
   renderSlides(flatSlides);
