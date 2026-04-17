@@ -444,9 +444,10 @@ function setupLinkedInTicker() {
   const lastIdx = points.length - 1;
 
   // Smoothed tween: we interpolate toward target using rAF so that
-  // scroll jumps become gentle rises.
+  // scroll jumps become gentle rises. Pauses when tab is hidden.
   let targetIdx = 0;
   let current = points[0].count;
+  let rafId = null;
 
   function setTarget() {
     const total = scroller.scrollHeight - scroller.clientHeight;
@@ -466,8 +467,15 @@ function setupLinkedInTicker() {
     const delta = target.delta;
     deltaEl.textContent = (delta >= 0 ? '+' : '') + delta.toLocaleString();
     lblEl.textContent = `The Fund · LinkedIn · ${formatDateShort(target.date)} 2026`;
-    requestAnimationFrame(render);
+    rafId = requestAnimationFrame(render);
   }
+
+  function startTicker() { if (!rafId) rafId = requestAnimationFrame(render); }
+  function stopTicker() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopTicker(); else startTicker();
+  });
 
   scroller.addEventListener('scroll', setTarget, { passive: true });
   setTarget();
@@ -475,7 +483,7 @@ function setupLinkedInTicker() {
   numEl.textContent = points[0].count.toLocaleString();
   deltaEl.textContent = '+0';
   lblEl.textContent = `The Fund · LinkedIn · ${formatDateShort(points[0].date)} 2026`;
-  requestAnimationFrame(render);
+  startTicker();
 }
 
 /* Toast notification for tab switch */
