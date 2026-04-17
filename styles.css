@@ -561,6 +561,40 @@ h1, h2, h3, h4 {
   .sticc-letter.active { font-size: clamp(5rem, 10vw, 9rem); }
 }
 
+/* ===== AFRICA COVERAGE MAP ===== */
+.coverage-map {
+  position: relative;
+  width: min(520px, 48vw);
+  max-height: 58vh;
+  margin: clamp(16px, 2.5vh, 32px) 0 clamp(12px, 2vh, 24px);
+  filter: drop-shadow(0 10px 40px rgba(0,0,0,0.4));
+}
+.coverage-map svg.africa-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.africa-country {
+  fill: rgba(255,255,255,0.06);
+  stroke: rgba(255,255,255,0.22);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+  transition: fill 0.35s ease;
+}
+.africa-country[data-covered="true"] {
+  fill: var(--accent);
+  stroke: rgba(255,255,255,0.55);
+  stroke-width: 0.8;
+  filter: drop-shadow(0 0 6px rgba(255,108,5,0.4));
+}
+body:not(.theme-acg) .africa-country[data-covered="true"] {
+  fill: var(--green);
+  filter: drop-shadow(0 0 6px rgba(0,196,106,0.45));
+}
+@media (max-width: 900px) {
+  .coverage-map { width: 78vw; max-height: 46vh; }
+}
+
 .slide h1 {
   font-size: clamp(2.25rem, 5.4vw, 4.5rem);
   line-height: 1.02;

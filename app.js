@@ -77,6 +77,7 @@ function expandSlides(version, versionKey) {
           gallery: beat.gallery || null,
           heroImage: beat.heroImage || sec.heroImage,
           heroPosition: beat.heroPosition || sec.heroPosition || null,
+          mapVariant: beat.mapVariant || sec.mapVariant || null,
           year: beat.year || sec.year || null,
           imageRefs: bIdx === 0 ? (sec.imageRefs || []) : [],
           beat: { index: bIdx, total: sec.beats.length, sectionId: sec.id },
@@ -96,6 +97,7 @@ function expandSlides(version, versionKey) {
         gallery: sec.gallery || null,
         heroImage: sec.heroImage,
         heroPosition: sec.heroPosition || null,
+        mapVariant: sec.mapVariant || null,
         year: sec.year || null,
         imageRefs: sec.imageRefs || [],
         beat: null,
@@ -235,6 +237,11 @@ function renderSlideContent(sec) {
     gallery = `<div class="gallery">${imgs}</div>`;
   }
 
+  // Coverage map visual: fetched and injected by ensureAfricaMap().
+  const mapBlock = sec.mapVariant === 'africa'
+    ? `<div class="coverage-map" data-map="africa"></div>`
+    : '';
+
   return `
     ${beatDots}
     ${sticc}
@@ -243,6 +250,7 @@ function renderSlideContent(sec) {
       <h2>${sec.title}</h2>
       ${sec.subtitle ? `<p class="lede">${sec.subtitle}</p>` : ''}
       ${diagram}
+      ${mapBlock}
       ${stats ? `<div class="stat-row">${stats}</div>` : ''}
       ${gallery}
       ${quote}
@@ -265,6 +273,24 @@ function renderSlides(flatSlides) {
     if (sec.heroPosition) slide.dataset.heroPosition = sec.heroPosition;
     slide.innerHTML = renderSlideContent(sec);
     slides.appendChild(slide);
+  });
+  hydrateCoverageMaps();
+}
+
+/* Fetch the Africa coverage SVG once and inject into every slide placeholder.
+   Inline markup lets CSS style countries by [data-covered]. */
+let _africaSvgPromise = null;
+function loadAfricaSvg() {
+  if (!_africaSvgPromise) {
+    _africaSvgPromise = fetch('assets/africa-coverage.svg').then(r => r.text());
+  }
+  return _africaSvgPromise;
+}
+function hydrateCoverageMaps() {
+  const slots = document.querySelectorAll('.coverage-map[data-map="africa"]:empty');
+  if (!slots.length) return;
+  loadAfricaSvg().then(svg => {
+    slots.forEach(s => { s.innerHTML = svg; });
   });
 }
 

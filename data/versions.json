@@ -318,6 +318,16 @@
         ]
       },
       {
+        "id": "reach",
+        "type": "chapter",
+        "eyebrow": "Ground truth",
+        "title": "Where we have been.",
+        "subtitle": "Communications has lived in the field across East, West, and Southern Africa. Every proof point begins on the ground.",
+        "mapVariant": "africa",
+        "heroImage": "east-africa--mastercard-kenya-portraits0088",
+        "heroPosition": "center 20%"
+      },
+      {
         "id": "storytelling",
         "heroImage": "east-africa--mastercard-kenya-portraits0002",
         "imageRefs": [
