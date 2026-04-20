@@ -3,70 +3,1449 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fund Partners Meeting · April 2026</title>
+<title>Africa Growth Fund · Five Years · Timeline</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260417c">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* ============================================================
+   FUND PARTNER MEETING - FIVE-YEAR TIMELINE
+   Scroll-snap page, one section per year, one animation style
+   per year. Energy builds from archival hush (2022) to present
+   mosaic (2026).
+
+   Section style map
+     2022  hero-crossfade   quiet archive, one frame at a time
+     2023  marquee-rows     horizontal bands, momentum
+     2024  ticker-columns   vertical drift, multiplying activity
+     2025  scatter-drift    expansive polaroid field
+     2026  mosaic-breathe   cinematic present-tense grid
+
+   Type: Poppins (Fund web standard) + JetBrains Mono (data).
+   ============================================================ */
+
+:root {
+    --bg-deep:   #0F2620;
+    --bg-ground: #0A1A15;
+    --cream:     #F5EFE2;
+    --cream-dim: rgba(245, 239, 226, 0.70);
+    --cream-faint: rgba(245, 239, 226, 0.22);
+
+    --fund-green: #00C46A;
+    --fund-gold:  #FFC72C;
+    --fund-green-soft: #2E5D4F;
+
+    --font-body: 'Poppins', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --radius: 10px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    background: var(--bg-ground);
+    color: var(--cream);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ===========================================
+   YEAR SECTION - shared shell
+   =========================================== */
+.year {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.year-stage {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.year-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(10, 26, 21, 0.48) 0%,
+            rgba(10, 26, 21, 0.04) 16%,
+            rgba(10, 26, 21, 0.04) 82%,
+            rgba(10, 26, 21, 0.66) 100%);
+}
+
+.year-hero {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 5vw, 6rem);
+    pointer-events: none;
+}
+
+.year-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(0.6rem, 0.72vw, 0.78rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fund-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.eyebrow::before {
+    content: '';
+    width: clamp(22px, 2.4vw, 38px);
+    height: 1px;
+    background: var(--fund-gold);
+    display: inline-block;
+}
+
+.meta {
+    font-family: var(--font-mono);
+    font-size: clamp(0.56rem, 0.68vw, 0.72rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-align: right;
+    line-height: 1.6;
+}
+.meta span { color: var(--cream); }
+
+.year-center {
+    align-self: end;
+    justify-self: start;
+    max-width: min(720px, 78vw);
+    padding: clamp(1.1rem, 1.9vh, 1.75rem) clamp(1.25rem, 2vw, 2rem) clamp(1.3rem, 2.2vh, 1.9rem);
+    background: rgba(10, 26, 21, 0.22);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid rgba(245, 239, 226, 0.10);
+    border-radius: clamp(12px, 1vw, 18px);
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(245, 239, 226, 0.06);
+}
+
+.year-digit {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: clamp(2.75rem, 8.5vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    text-shadow: 0 2px 24px rgba(10, 26, 21, 0.55);
+}
+/* Progressive weight: earlier years thinner, later years bolder */
+.year[data-index="0"] .year-digit { font-weight: 200; }
+.year[data-index="1"] .year-digit { font-weight: 300; }
+.year[data-index="2"] .year-digit { font-weight: 400; }
+.year[data-index="3"] .year-digit { font-weight: 600; }
+.year[data-index="4"] .year-digit { font-weight: 800; }
+
+.year-title {
+    display: block;
+    margin-top: clamp(0.35rem, 0.8vh, 0.8rem);
+    font-size: clamp(1.25rem, 2.5vw, 2.35rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    text-shadow: 0 1px 14px rgba(10, 26, 21, 0.45);
+}
+.year-title em { color: var(--fund-green); font-style: italic; font-weight: 500; }
+
+.year-caption {
+    margin-top: clamp(0.6rem, 1.1vh, 1rem);
+    font-size: clamp(0.82rem, 0.98vw, 0.98rem);
+    color: var(--cream-dim);
+    max-width: 54ch;
+    line-height: 1.5;
+    text-shadow: 0 1px 10px rgba(10, 26, 21, 0.4);
+}
+
+.year-bullets {
+    margin-top: clamp(0.8rem, 1.4vh, 1.2rem);
+    list-style: none;
+    display: grid;
+    gap: clamp(0.35rem, 0.55vh, 0.55rem);
+    max-width: 62ch;
+    font-family: var(--font-body);
+    font-size: clamp(0.72rem, 0.86vw, 0.88rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.45;
+}
+.year-bullets li {
+    position: relative;
+    padding-left: 1.1rem;
+    text-shadow: 0 1px 10px rgba(10, 26, 21, 0.45);
+}
+.year-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 7px;
+    height: 1px;
+    background: var(--fund-gold);
+}
+.year-bullets li strong {
+    color: var(--fund-green);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.year-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.lockup {
+    font-family: var(--font-mono);
+    font-size: clamp(0.54rem, 0.65vw, 0.7rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    line-height: 1.6;
+}
+.lockup strong {
+    display: block;
+    color: var(--cream);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: clamp(0.68rem, 0.82vw, 0.82rem);
+    margin-bottom: 0.18rem;
+}
+.lockup-right { text-align: right; }
+
+.demo-badge {
+    position: absolute;
+    top: clamp(1rem, 2.5vh, 2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--fund-gold);
+    border-radius: 999px;
+    color: var(--fund-gold);
+    background: rgba(10, 26, 21, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ===========================================
+   STYLE 1 - archive-drift (2022)
+   Dense static collage with archival grayscale+sepia wash.
+   The whole plane slowly pans and zooms - the feel of
+   lingering over a photo album rather than flipping pages.
+   =========================================== */
+.archive-drift {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #0A1A15;
+}
+.archive-plane {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(clamp(120px, 14vh, 200px), 1fr);
+    gap: clamp(6px, 0.6vw, 12px);
+    padding: clamp(6px, 0.6vw, 12px);
+    animation: archiveDrift 54s ease-in-out infinite alternate;
+    animation-play-state: paused;
+    will-change: transform;
+    transform-origin: 42% 48%;
+}
+.year.active .archive-plane { animation-play-state: running; }
+@keyframes archiveDrift {
+    0%   { transform: scale(1.04) translate(0%, 0%); }
+    50%  { transform: scale(1.10) translate(-2%, -1.5%); }
+    100% { transform: scale(1.04) translate(-4%, -3%); }
+}
+.archive-tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #1A3A30;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+.archive-tile:nth-child(5n)  { grid-row: span 2; }
+.archive-tile:nth-child(9n)  { grid-column: span 2; }
+.archive-tile:nth-child(13n) { grid-row: span 2; grid-column: span 2; }
+.archive-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.55) sepia(0.18) contrast(1.02) brightness(0.92);
+}
+@media (max-width: 1200px) {
+    .archive-plane { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 720px) {
+    .archive-plane { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===========================================
+   STYLE 2 - marquee-rows (2023)
+   Three horizontal rows, alternating direction + speed.
+   =========================================== */
+.marquee-rows {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.4vw, 24px);
+    padding: clamp(12px, 1.4vw, 24px) 0;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at 0% 50%, rgba(0, 196, 106, 0.10), transparent 55%),
+        radial-gradient(ellipse at 100% 50%, rgba(255, 199, 44, 0.08), transparent 55%),
+        var(--bg-deep);
+}
+.marquee-row {
+    display: flex;
+    gap: clamp(12px, 1.4vw, 24px);
+    will-change: transform;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    flex-shrink: 0;
+}
+.year.active .marquee-row { animation-play-state: running; }
+
+.marquee-row.r1 { animation: marqueeLeft  42s linear infinite; }
+.marquee-row.r2 { animation: marqueeRight 52s linear infinite; }
+.marquee-row.r3 { animation: marqueeLeft  34s linear infinite; }
+
+@keyframes marqueeLeft  { from { transform: translateX(0); }     to { transform: translateX(-50%); } }
+@keyframes marqueeRight { from { transform: translateX(-50%); }  to { transform: translateX(0); } }
+
+.marquee-tile {
+    flex: 0 0 auto;
+    width: clamp(180px, 22vw, 360px);
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #1A3A30;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.marquee-tile:nth-child(5n) { aspect-ratio: 4 / 5; width: clamp(150px, 18vw, 280px); }
+.marquee-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: saturate(1.05) contrast(1.03);
+}
+
+/* ===========================================
+   STYLE 3 - ticker-columns (2024)
+   Six vertical columns, alternating direction + speed.
+   =========================================== */
+.ticker-columns {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(10px, 1vw, 18px);
+    padding: clamp(10px, 1vw, 18px);
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(0, 196, 106, 0.10), transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(255, 199, 44, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-ground) 100%);
+}
+.ticker-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1vw, 18px);
+    will-change: transform;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+.year.active .ticker-col { animation-play-state: running; }
+
+.ticker-col:nth-child(1) { animation: driftUp  108s linear infinite; animation-delay:   0s; }
+.ticker-col:nth-child(2) { animation: driftDown 88s linear infinite; animation-delay: -11s; }
+.ticker-col:nth-child(3) { animation: driftUp   74s linear infinite; animation-delay: -22s; }
+.ticker-col:nth-child(4) { animation: driftDown 78s linear infinite; animation-delay:  -7s; }
+.ticker-col:nth-child(5) { animation: driftUp   92s linear infinite; animation-delay: -18s; }
+.ticker-col:nth-child(6) { animation: driftDown 112s linear infinite; animation-delay: -30s; }
+
+@keyframes driftUp   { from { transform: translateY(0); }    to { transform: translateY(-50%); } }
+@keyframes driftDown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+.ticker-tile {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #1A3A30;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.ticker-tile:nth-child(3n) { aspect-ratio: 3 / 4; }
+.ticker-tile:nth-child(7n) { aspect-ratio: 1 / 1; }
+.ticker-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: saturate(1.03) contrast(1.02);
+}
+
+/* ===========================================
+   STYLE 4 - triptych-crossfade (2025)
+   Three tall editorial panels side-by-side. Each panel
+   independently cycles through the image pool at its own
+   cadence so the screen never settles. Reads as "three
+   windows onto the work" - expansion without chaos.
+   =========================================== */
+.triptych-crossfade {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(4px, 0.5vw, 10px);
+    padding: clamp(4px, 0.5vw, 10px);
+    background: var(--bg-deep);
+}
+.triptych-panel {
+    position: relative;
+    overflow: hidden;
+    background: #1A3A30;
+    border-radius: 6px;
+}
+.triptych-panel .frame {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2.4s var(--ease-expo);
+    transform: scale(1.02);
+    will-change: opacity, transform;
+    filter: saturate(1.05) contrast(1.03);
+}
+.triptych-panel .frame.visible {
+    opacity: 1;
+    animation: triptychKenBurns 11s ease-out forwards;
+    animation-play-state: paused;
+}
+.year.active .triptych-panel .frame.visible { animation-play-state: running; }
+@keyframes triptychKenBurns {
+    from { transform: scale(1.02); }
+    to   { transform: scale(1.14); }
+}
+@media (max-width: 720px) {
+    .triptych-crossfade { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr; }
+}
+
+/* ===========================================
+   STYLE 5 - mosaic-breathe (2026)
+   Grid mosaic, each cell Ken Burns + staggered crossfade.
+   =========================================== */
+.mosaic-breathe {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(160px, 14vw, 260px), 1fr));
+    grid-auto-rows: clamp(140px, 14vw, 240px);
+    gap: clamp(4px, 0.6vw, 10px);
+    padding: clamp(4px, 0.6vw, 10px);
+    background: var(--bg-deep);
+}
+.mosaic-cell {
+    position: relative;
+    overflow: hidden;
+    background: #1A3A30;
+    border-radius: 4px;
+}
+.mosaic-cell .frame {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.0);
+    transition: opacity 1.6s var(--ease-expo);
+    will-change: opacity, transform;
+    filter: saturate(1.03) contrast(1.02);
+}
+.mosaic-cell .frame.visible {
+    opacity: 1;
+    animation: mosaicBreathe 12s ease-in-out infinite;
+    animation-play-state: paused;
+}
+.year.active .mosaic-cell .frame.visible { animation-play-state: running; }
+@keyframes mosaicBreathe {
+    0%, 100% { transform: scale(1.0); }
+    50%      { transform: scale(1.08); }
+}
+/* Span variation for visual rhythm */
+.mosaic-cell:nth-child(7n)  { grid-row: span 2; }
+.mosaic-cell:nth-child(11n) { grid-column: span 2; }
+.mosaic-cell:nth-child(17n) { grid-row: span 2; grid-column: span 2; }
+
+/* ===========================================
+   CODA - textless ambient forever-loop
+   Dense 8-column ticker pulling every image from every
+   year folder. Always runs (never paused by IO). No text,
+   no badges, no lockups. Built for ambient room display.
+   =========================================== */
+.year.coda .year-overlay,
+.year.coda .year-hero,
+.year.coda .thread { display: none; }
+
+.ticker-forever {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: clamp(6px, 0.6vw, 12px);
+    padding: clamp(6px, 0.6vw, 12px);
+    background:
+        radial-gradient(ellipse at 15% 0%, rgba(0, 196, 106, 0.08), transparent 55%),
+        radial-gradient(ellipse at 85% 100%, rgba(255, 199, 44, 0.06), transparent 55%),
+        var(--bg-ground);
+}
+.forever-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 0.6vw, 12px);
+    will-change: transform;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.forever-col:nth-child(1) { animation: driftUp   142s linear infinite; animation-delay:   0s; }
+.forever-col:nth-child(2) { animation: driftDown 168s linear infinite; animation-delay: -23s; }
+.forever-col:nth-child(3) { animation: driftUp   124s linear infinite; animation-delay: -41s; }
+.forever-col:nth-child(4) { animation: driftDown 156s linear infinite; animation-delay:  -9s; }
+.forever-col:nth-child(5) { animation: driftUp   132s linear infinite; animation-delay: -62s; }
+.forever-col:nth-child(6) { animation: driftDown 180s linear infinite; animation-delay: -17s; }
+.forever-col:nth-child(7) { animation: driftUp   148s linear infinite; animation-delay: -35s; }
+.forever-col:nth-child(8) { animation: driftDown 164s linear infinite; animation-delay: -54s; }
+
+.forever-tile {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1A3A30;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.forever-tile:nth-child(3n) { aspect-ratio: 3 / 4; }
+.forever-tile:nth-child(7n) { aspect-ratio: 1 / 1; }
+.forever-tile:nth-child(13n) { aspect-ratio: 4 / 3; }
+.forever-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: saturate(1.04) contrast(1.02);
+}
+
+/* ===========================================
+   SIDE NAV - year dots
+   =========================================== */
+.nav {
+    position: fixed;
+    right: clamp(1rem, 2vw, 2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--cream-dim);
+}
+.nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.25s ease, color 0.25s ease;
+}
+.nav a::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream-faint);
+    border: 1px solid var(--cream-dim);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+.nav a.active { opacity: 1; color: var(--cream); }
+.nav a.active::after { background: var(--fund-green); transform: scale(1.3); }
+
+/* ===========================================
+   CONTROLS
+   =========================================== */
+.controls {
+    position: fixed;
+    bottom: clamp(1rem, 2vh, 1.75rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 51;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    background: rgba(10, 26, 21, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 239, 226, 0.12);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+}
+.controls kbd {
+    font-family: var(--font-mono);
+    background: rgba(245, 239, 226, 0.08);
+    border: 1px solid rgba(245, 239, 226, 0.15);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    color: var(--cream);
+    font-size: 0.62rem;
+}
+
+/* ===========================================
+   THREAD - brand strand along top of each section
+   =========================================== */
+.thread {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    display: flex;
+    z-index: 20;
+}
+.thread span { flex: 1; opacity: 0.7; }
+.thread span:nth-child(1) { background: var(--fund-green); }
+.thread span:nth-child(2) { background: var(--fund-gold); }
+.thread span:nth-child(3) { background: var(--fund-green-soft); }
+
+/* Active-year highlight strand */
+.year.active .thread span { opacity: 1; }
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 1400px) {
+    .ticker-forever { grid-template-columns: repeat(6, 1fr); }
+    .forever-col:nth-child(7), .forever-col:nth-child(8) { display: none; }
+}
+@media (max-width: 1200px) {
+    .ticker-columns { grid-template-columns: repeat(4, 1fr); }
+    .ticker-col:nth-child(5), .ticker-col:nth-child(6) { display: none; }
+    .ticker-forever { grid-template-columns: repeat(5, 1fr); }
+    .forever-col:nth-child(6) { display: none; }
+}
+@media (max-width: 720px) {
+    .ticker-columns { grid-template-columns: repeat(3, 1fr); }
+    .ticker-col:nth-child(4) { display: none; }
+    .ticker-forever { grid-template-columns: repeat(3, 1fr); }
+    .forever-col:nth-child(4), .forever-col:nth-child(5) { display: none; }
+    .year-top, .year-bottom { flex-direction: column; align-items: flex-start; }
+    .meta, .lockup-right { text-align: left; }
+    .nav { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .archive-plane, .marquee-row, .ticker-col, .forever-col,
+    .triptych-panel .frame.visible, .mosaic-cell .frame.visible {
+        animation: none !important;
+    }
+}
+
+/* Space-to-pause: halts every CSS-driven engine in one go.
+   (JS-interval engines also get stop() called separately.) */
+body.paused .archive-plane,
+body.paused .marquee-row,
+body.paused .ticker-col,
+body.paused .forever-col,
+body.paused .triptych-panel .frame.visible,
+body.paused .mosaic-cell .frame.visible {
+    animation-play-state: paused !important;
+}
+</style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
+<nav class="nav" id="nav"></nav>
 
-<div id="hero-bg">
-  <div class="bg-layer visible" id="bg-a"></div>
-  <div class="bg-layer" id="bg-b"></div>
+<main id="main"></main>
+
+<div class="controls">
+    <span><kbd>↑ ↓</kbd> years</span>
+    <span><kbd>Space</kbd> pause</span>
+    <span><kbd>F</kbd> fullscreen</span>
 </div>
 
-<div id="cover-mark">
-  <div class="cover-mark-card">
-    <img src="assets/mcf-logo.png" alt="Mastercard Foundation" class="mcf-logo">
-    <div class="cover-mark-main">Africa Growth Fund</div>
-  </div>
-</div>
+<script>
+/* ============================================================
+   DATA - year sections
+   ============================================================ */
 
-<div id="pinned-mark">
-  <img src="assets/mcf-logo.png" alt="" class="pinned-logo">
-  <span class="pinned-hashtag">#AfricaGrowthFund</span>
-</div>
+const FALLBACK_BASE = 'img/2026/';
+const FALLBACK_IMAGES = [
+    'agroeknor-amina-portrait-01.jpg',
+    'agroeknor-amina-portrait-02.jpg',
+    'aruwa-adesuwa-portrait-01.jpg',
+    'aruwa-press-release-01.jpg',
+    'eastafrica-kenya-portrait-01.jpg',
+    'eastafrica-kenya-portrait-02.jpg',
+    'eastafrica-kenya-portrait-03.jpg',
+    'eastafrica-kenya-portrait-04.jpg',
+    'eastafrica-kenya-portrait-05.jpg',
+    'eastafrica-kenya-portrait-06.jpg',
+    'eastafrica-kenya-portrait-07.jpg',
+    'eastafrica-kenya-portrait-08.jpg',
+    'eastafrica-kenya-portrait-09.jpg',
+    'eastafrica-uganda-equator-chocolate-01.jpg',
+    'eastafrica-uganda-equator-chocolate-02.jpg',
+    'eastafrica-uganda-forma-foods-01.jpg',
+    'eastafrica-uganda-forma-foods-02.jpg',
+    'eastafrica-uganda-forma-foods-03.jpg',
+    'eastafrica-uganda-forma-foods-04.jpg',
+    'eastafrica-uganda-inua-capital-01.jpg',
+    'kazana-field-visit-01.jpg',
+    'kazana-field-visit-02.jpg',
+    'koolboks-01.jpg',
+    'koolboks-02.jpg',
+    'koolboks-03.jpg',
+    'roundtable-nigeria-01.jpg',
+    'roundtable-nigeria-02.jpg',
+    'roundtable-nigeria-03.jpg',
+    'taeillio-01.jpg',
+    'taeillio-02.jpg',
+    'taeillio-03.jpg',
+    'tomato-jos-kaduna-01.jpg',
+    'wemy-industries-01.jpg',
+    'wemy-industries-02.jpg',
+    'wemy-industries-03.jpg',
+    'wemy-industries-04.jpg'
+];
 
-<div id="acg-cover-mark">
-  <div class="acg-eyebrow">Africa Communications Media Group</div>
-  <div class="acg-wordmark">
-    <span>AFRICA</span>
-    <span>COMMUNICATIONS MEDIA</span>
-    <span>GROUP</span>
-  </div>
-  <div class="acg-tagline">Communications for Africa's institutional moment.</div>
-</div>
+/* Populate images[] per year once real 2022-2025 assets land.
+   Leave empty for demo mode (falls back to 2026 set). */
+const YEARS = [
+    {
+        year: 2022,
+        title: 'The Fund is <em>created</em>.',
+        caption: 'Africa\\u2019s largest gender-lens initiative takes shape. A US$200M, five-year Fund of Funds directed at women- and youth-focused SMEs.',
+        bullets: [
+            'MEDA-led consortium. <strong>US$200M</strong>, five years.',
+            'Target by 2027: <strong>20 IVs</strong>, <strong>200 SMEs</strong>, <strong>15,000</strong> dignified jobs.',
+            'First commitments approved: <strong>Inua Capital</strong> (US$5M) and <strong>Aruwa Capital</strong> (US$2-3M).',
+            '<strong>23 IVs</strong> already identified as investment-eligible in the pipeline.'
+        ],
+        style: 'archive-drift',
+        base: 'img/2022/',
+        images: [
+            'y22-01.jpg',
+            'y22-02.jpg',
+            'y22-03.jpg',
+            'y22-04.jpg',
+            'y22-05.jpg',
+            'y22-06.jpg',
+            'y22-07.jpg',
+            'y22-08.jpg',
+            'y22-09.jpg',
+            'y22-10.jpg',
+            'y22-11.jpg',
+            'y22-12.jpg',
+            'y22-13.jpg'
+        ]
+    },
+    {
+        year: 2023,
+        title: 'Capital <em>begins</em> moving.',
+        caption: 'Design and pipeline give way to active deployment. The Fund crosses into execution with its first committed capital.',
+        bullets: [
+            '<strong>US$7.2M</strong> committed across <strong>2</strong> Investment Vehicles.',
+            'Directed at emerging, gender-diverse African fund managers.',
+            'Pre-investment advisory, due-diligence refinement, ecosystem engagement.',
+            'Operational, governance, and learning systems built to carry scale.'
+        ],
+        style: 'marquee-rows',
+        base: 'img/2023/',
+        images: [
+            'nairobi-2023-01.jpg',
+            'nairobi-2023-02.jpg',
+            'nairobi-2023-03.jpg',
+            'nairobi-2023-04.jpg',
+            'nairobi-2023-05.jpg',
+            'nairobi-2023-06.jpg',
+            'nairobi-2023-07.jpg',
+            'nairobi-2023-08.jpg',
+            'nairobi-2023-09.jpg',
+            'nairobi-2023-10.jpg',
+            'nairobi-2023-11.jpg',
+            'nairobi-2023-12.jpg',
+            'y23-01.jpg',
+            'y23-02.jpg',
+            'y23-03.jpg',
+            'y23-04.jpg',
+            'y23-05.jpg',
+            'y23-06.jpg',
+            'y23-07.jpg',
+            'y23-08.jpg',
+            'y23-09.jpg',
+            'y23-10.jpg',
+            'y23-11.jpg'
+        ]
+    },
+    {
+        year: 2024,
+        title: 'Kampala <em>sharpens</em> the plan.',
+        caption: 'Post-Kampala consortium reset: the Fund pivots from setup and experimentation toward execution and scale.',
+        bullets: [
+            '<strong>16 IVs</strong> committed, totaling <strong>US$66.53M</strong>.',
+            'Tighter investment cycle. Prioritised legal close and drawdown.',
+            'Warehousing and working capital as catalytic instruments.',
+            'Consortium roles clarified. Fund repositioned as an active ecosystem shaper.'
+        ],
+        style: 'ticker-columns',
+        base: 'img/2024/',
+        images: [
+            'weave-2024-01.jpg',
+            'weave-2024-02.jpg',
+            'weave-2024-03.jpg',
+            'weave-2024-04.jpg',
+            'weave-2024-05.jpg',
+            'weave-2024-06.jpg',
+            'weave-2024-07.jpg',
+            'weave-2024-08.jpg',
+            'weave-2024-09.jpg',
+            'weave-2024-10.jpg',
+            'weave-2024-11.jpg',
+            'weave-2024-12.jpg',
+            'weave-2024-13.jpg',
+            'weave-2024-14.jpg',
+            'weave-2024-15.jpg',
+            'weave-2024-16.jpg',
+            'weave-2024-17.jpg',
+            'weave-2024-18.jpg',
+            'weave-2024-19.jpg',
+            'weave-2024-20.jpg',
+            'weave-2024-21.jpg',
+            'weave-2024-22.jpg',
+            'weave-2024-23.jpg',
+            'weave-2024-24.jpg',
+            'weave-2024-25.jpg',
+            'weave-2024-26.jpg',
+            'weave-2024-27.jpg',
+            'weave-2024-28.jpg',
+            'weave-2024-29.jpg',
+            'weave-2024-30.jpg',
+            'weave-2024-31.jpg',
+            'weave-2024-32.jpg',
+            'weave-2024-33.jpg',
+            'weave-2024-34.jpg',
+            'weave-2024-35.jpg',
+            'weave-2024-36.jpg',
+            'weave-2024-37.jpg',
+            'weave-2024-38.jpg',
+            'weave-2024-39.jpg',
+            'weave-2024-40.jpg',
+            'weave-2024-41.jpg',
+            'weave-2024-42.jpg',
+            'weave-2024-43.jpg',
+            'weave-2024-44.jpg',
+            'weave-2024-45.jpg',
+            'weave-2024-46.jpg',
+            'weave-2024-47.jpg',
+            'weave-2024-48.jpg',
+            'y24-01.jpg',
+            'y24-02.jpg',
+            'y24-03.jpg',
+            'y24-04.jpg',
+            'y24-05.jpg',
+            'y24-06.jpg',
+            'y24-07.jpg',
+            'y24-08.jpg',
+            'y24-09.jpg',
+            'y24-10.jpg',
+            'y24-11.jpg',
+            'y24-12.jpg',
+            'y24-13.jpg',
+            'y24-14.jpg',
+            'y24-15.jpg',
+            'y24-16.jpg',
+            'y24-17.jpg',
+            'y24-18.jpg',
+            'y24-19.jpg',
+            'y24-20.jpg',
+            'y24-21.jpg',
+            'y24-22.jpg',
+            'y24-23.jpg',
+            'y24-24.jpg',
+            'y24-25.jpg',
+            'y24-26.jpg',
+            'y24-27.jpg',
+            'y24-28.jpg',
+            'y24-29.jpg',
+            'y24-30.jpg',
+            'y24-31.jpg',
+            'y24-32.jpg',
+            'y24-33.jpg'
+        ]
+    },
+    {
+        year: 2025,
+        title: 'The Fund takes <em>shape</em>.',
+        caption: 'Portfolio consolidation over commitment-building. Capital moves more efficiently from commitment to deployment to SMEs.',
+        bullets: [
+            '<strong>US$85M</strong> committed across <strong>16 IVs</strong>.',
+            'Active stewardship: redeployment toward IVs with clearer pathways.',
+            'Warehousing and working capital enable first-time and emerging IVs.',
+            '<strong>WEAVE</strong> launched with MEDA and the Mastercard Foundation.'
+        ],
+        style: 'triptych-crossfade',
+        base: 'img/2025/',
+        images: [
+            'y25-01.jpg',
+            'y25-02.jpg',
+            'y25-03.jpg',
+            'y25-04.jpg',
+            'y25-05.jpg',
+            'y25-06.jpg',
+            'y25-07.jpg',
+            'y25-08.jpg',
+            'y25-09.jpg',
+            'y25-10.jpg',
+            'y25-11.jpg',
+            'y25-12.jpg',
+            'y25-13.jpg',
+            'y25-14.jpg',
+            'y25-15.jpg',
+            'y25-16.jpg',
+            'y25-17.jpg',
+            'y25-18.jpg',
+            'y25-19.jpg',
+            'y25-20.jpg',
+            'y25-21.jpg',
+            'y25-22.jpg',
+            'y25-23.jpg',
+            'y25-24.jpg',
+            'y25-25.jpg',
+            'y25-26.jpg',
+            'y25-27.jpg',
+            'y25-28.jpg',
+            'y25-29.jpg',
+            'y25-30.jpg',
+            'y25-31.jpg',
+            'y25-32.jpg',
+            'y25-33.jpg',
+            'y25-34.jpg',
+            'y25-35.jpg',
+            'y25-36.jpg',
+            'y25-37.jpg',
+            'y25-38.jpg',
+            'y25-39.jpg',
+            'y25-40.jpg',
+            'y25-41.jpg',
+            'y25-42.jpg',
+            'y25-43.jpg',
+            'y25-44.jpg',
+            'y25-45.jpg',
+            'y25-46.jpg',
+            'y25-47.jpg',
+            'y25-48.jpg',
+            'y25-49.jpg',
+            'y25-50.jpg',
+            'y25-51.jpg',
+            'y25-52.jpg',
+            'y25-53.jpg',
+            'y25-54.jpg',
+            'y25-55.jpg',
+            'y25-56.jpg',
+            'y25-57.jpg',
+            'y25-58.jpg',
+            'y25-59.jpg',
+            'y25-60.jpg',
+            'y25-61.jpg',
+            'y25-62.jpg',
+            'y25-63.jpg',
+            'y25-64.jpg',
+            'y25-65.jpg',
+            'y25-66.jpg',
+            'y25-67.jpg',
+            'y25-68.jpg',
+            'y25-69.jpg'
+        ]
+    },
+    {
+        year: 2026,
+        title: 'The last six <em>months</em>.',
+        caption: 'Field visits, portfolios, consortium rooms, and published work. Everything visible here is from the last six months.',
+        bullets: [],
+        style: 'mosaic-breathe',
+        base: 'img/2026/',
+        images: [
+            'y26-01.jpg',
+            'y26-02.jpg',
+            'y26-03.jpg',
+            'y26-04.jpg',
+            'y26-05.jpg',
+            'y26-06.jpg',
+            'y26-07.jpg',
+            'y26-08.jpg',
+            'y26-09.jpg',
+            'y26-10.jpg',
+            'y26-11.jpg',
+            'y26-12.jpg',
+            'y26-13.jpg',
+            'y26-14.jpg',
+            'y26-15.jpg',
+            'y26-16.jpg'
+        ]
+    }
+];
 
-<div id="acg-pinned-mark">ACG</div>
+/* ============================================================
+   UTIL
+   ============================================================ */
 
-<div id="fund-pattern-deco" aria-hidden="true"></div>
+function shuffle(arr, seed) {
+    const a = arr.slice();
+    let s = seed;
+    for (let i = a.length - 1; i > 0; i--) {
+        s = (s * 9301 + 49297) % 233280;
+        const j = Math.floor((s / 233280) * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
 
-<div id="ticker" aria-label="LinkedIn audience growth">
-  <div class="ticker-icon">in</div>
-  <div class="ticker-body">
-    <div class="ticker-top">
-      <span class="ticker-num" id="ticker-num">18,997</span>
-      <span class="ticker-delta" id="ticker-delta">+0</span>
-    </div>
-    <div class="ticker-lbl" id="ticker-lbl">The Fund · LinkedIn · Jan 1 2026</div>
-  </div>
-</div>
+function resolveImages(y, index) {
+    if (y.images && y.images.length > 0) {
+        return { base: y.base, list: y.images, demo: false };
+    }
+    return { base: FALLBACK_BASE, list: FALLBACK_IMAGES, demo: true };
+}
 
-<div id="tabs" role="tablist"></div>
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
 
-<div id="slide-counter">01 / 12</div>
+function buildShell(y, index, demo) {
+    const section = document.createElement('section');
+    section.className = 'year';
+    section.dataset.index = index;
+    section.dataset.year = y.year;
+    section.id = 'year-' + y.year;
 
-<main id="scroller">
-  <div id="slides"></div>
-</main>
+    section.innerHTML = `
+        <div class="thread"><span></span><span></span><span></span></div>
+        <div class="year-stage" data-style="${y.style}"></div>
+        <div class="year-overlay"></div>
+        ${demo ? '<div class="demo-badge">Demo imagery · ' + y.year + ' folder empty</div>' : ''}
+        <div class="year-hero">
+            <div class="year-top">
+                <div class="eyebrow">Africa Growth Fund · ${y.year}</div>
+                <div class="meta">Section ${index + 1} of ${YEARS.length}<br><span>${y.style.replace('-', ' ')}</span></div>
+            </div>
+            <div class="year-center">
+                <div class="year-digit">${y.year}</div>
+                <h2 class="year-title">${y.title}</h2>
+                <p class="year-caption">${y.caption}</p>
+                ${y.bullets && y.bullets.length ? `<ul class="year-bullets">${y.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
+            </div>
+            <div class="year-bottom">
+                <div class="lockup">
+                    <strong>ACG</strong>
+                    Africa Communications Group
+                </div>
+                <div class="lockup lockup-right">
+                    <strong>Mastercard Foundation</strong>
+                    Africa Growth Fund
+                </div>
+            </div>
+        </div>
+    `;
+    return section;
+}
 
-<div id="timeline-bar" aria-hidden="true"></div>
+/* ============================================================
+   STYLE BUILDERS
+   ============================================================ */
 
-<div id="dock" aria-hidden="true"></div>
+// 1. Archive drift (dense collage, archival wash, whole plane drifts)
+function buildArchiveDrift(stage, base, images, seed) {
+    stage.classList.add('archive-drift');
+    const plane = document.createElement('div');
+    plane.className = 'archive-plane';
+    stage.appendChild(plane);
 
-<script src="app.js?v=20260417c"></script>
+    const list = shuffle(images, seed);
+    const TARGET = Math.min(36, list.length * 2);
+    for (let i = 0; i < TARGET; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'archive-tile';
+        const img = document.createElement('img');
+        img.src = base + list[i % list.length];
+        img.loading = 'lazy';
+        img.alt = '';
+        tile.appendChild(img);
+        plane.appendChild(tile);
+    }
+    return { start() {}, stop() {} };
+}
+
+// 2. Marquee rows
+function buildMarqueeRows(stage, base, images, seed) {
+    stage.classList.add('marquee-rows');
+    for (let r = 0; r < 3; r++) {
+        const row = document.createElement('div');
+        row.className = 'marquee-row r' + (r + 1);
+        const order = shuffle(images, seed + r * 31);
+        const seq = order.concat(order);
+        seq.forEach((name) => {
+            const t = document.createElement('div');
+            t.className = 'marquee-tile';
+            const img = document.createElement('img');
+            img.src = base + name;
+            img.loading = 'lazy';
+            img.alt = '';
+            t.appendChild(img);
+            row.appendChild(t);
+        });
+        stage.appendChild(row);
+    }
+    return { start() {}, stop() {} };
+}
+
+// 3. Ticker columns
+function buildTickerColumns(stage, base, images, seed) {
+    stage.classList.add('ticker-columns');
+    for (let c = 0; c < 6; c++) {
+        const col = document.createElement('div');
+        col.className = 'ticker-col';
+        const order = shuffle(images, seed + c * 137 + 11);
+        const seq = order.concat(order);
+        seq.forEach((name) => {
+            const t = document.createElement('div');
+            t.className = 'ticker-tile';
+            const img = document.createElement('img');
+            img.src = base + name;
+            img.loading = 'lazy';
+            img.alt = '';
+            t.appendChild(img);
+            col.appendChild(t);
+        });
+        stage.appendChild(col);
+    }
+    return { start() {}, stop() {} };
+}
+
+// 4. Triptych crossfade
+function buildTriptychCrossfade(stage, base, images, seed) {
+    stage.classList.add('triptych-crossfade');
+    const intervals = [5200, 6400, 4600]; // intentionally desynced
+    const panels = [];
+    for (let p = 0; p < 3; p++) {
+        const panel = document.createElement('div');
+        panel.className = 'triptych-panel';
+        const list = shuffle(images, seed + p * 97);
+        const f1 = document.createElement('div');
+        f1.className = 'frame visible';
+        f1.style.backgroundImage = `url("${base}${list[0]}")`;
+        const f2 = document.createElement('div');
+        f2.className = 'frame';
+        panel.appendChild(f1);
+        panel.appendChild(f2);
+        stage.appendChild(panel);
+        panels.push({ f1, f2, list, idx: 0, active: 1 });
+    }
+
+    let timers = [];
+    function swap(pi) {
+        const p = panels[pi];
+        p.idx = (p.idx + 1) % p.list.length;
+        const incoming = p.active === 1 ? p.f2 : p.f1;
+        const outgoing = p.active === 1 ? p.f1 : p.f2;
+        incoming.style.backgroundImage = `url("${base}${p.list[p.idx]}")`;
+        incoming.classList.add('visible');
+        outgoing.classList.remove('visible');
+        p.active = p.active === 1 ? 2 : 1;
+    }
+
+    return {
+        start() {
+            if (timers.length) return;
+            panels.forEach((_, i) => {
+                timers.push(setInterval(() => swap(i), intervals[i]));
+            });
+        },
+        stop() {
+            timers.forEach(clearInterval);
+            timers = [];
+        }
+    };
+}
+
+// 6. Ticker forever (textless coda - always running)
+function buildTickerForever(stage, urls, seed) {
+    stage.classList.add('ticker-forever');
+    const COLS = 8;
+    for (let c = 0; c < COLS; c++) {
+        const col = document.createElement('div');
+        col.className = 'forever-col';
+        const order = shuffle(urls, seed + c * 211 + 7);
+        const seq = order.concat(order);
+        seq.forEach((url) => {
+            const t = document.createElement('div');
+            t.className = 'forever-tile';
+            const img = document.createElement('img');
+            img.src = url;
+            img.loading = 'lazy';
+            img.alt = '';
+            t.appendChild(img);
+            col.appendChild(t);
+        });
+        stage.appendChild(col);
+    }
+    // No-op lifecycle - always running, CSS never gated on .active
+    return { start() {}, stop() {} };
+}
+
+// 5. Mosaic breathe
+function buildMosaicBreathe(stage, base, images, seed) {
+    stage.classList.add('mosaic-breathe');
+    // Compute approx cell count based on viewport
+    const cellsPerRow = Math.max(4, Math.floor(window.innerWidth / 220));
+    const rows = Math.max(3, Math.ceil(window.innerHeight / 200));
+    const TOTAL = Math.min(cellsPerRow * rows, 80);
+
+    const list = shuffle(images, seed);
+    const cells = [];
+    for (let i = 0; i < TOTAL; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'mosaic-cell';
+
+        const f1 = document.createElement('div');
+        f1.className = 'frame visible';
+        f1.style.backgroundImage = `url("${base}${list[i % list.length]}")`;
+        f1.style.animationDelay = (i * 0.3) + 's';
+
+        const f2 = document.createElement('div');
+        f2.className = 'frame';
+
+        cell.appendChild(f1);
+        cell.appendChild(f2);
+        stage.appendChild(cell);
+        cells.push({ el: cell, f1, f2, index: i, active: 1 });
+    }
+
+    // Periodic image swap per cell
+    let swapTimer = null;
+    let swapCounter = TOTAL;
+
+    function swapOne() {
+        const c = cells[Math.floor(Math.random() * cells.length)];
+        const nextImg = list[swapCounter % list.length];
+        swapCounter++;
+        const incoming = c.active === 1 ? c.f2 : c.f1;
+        const outgoing = c.active === 1 ? c.f1 : c.f2;
+        incoming.style.backgroundImage = `url("${base}${nextImg}")`;
+        incoming.classList.add('visible');
+        incoming.style.animationDelay = '0s';
+        requestAnimationFrame(() => {
+            outgoing.classList.remove('visible');
+            c.active = c.active === 1 ? 2 : 1;
+        });
+    }
+
+    return {
+        start() {
+            if (swapTimer) return;
+            swapTimer = setInterval(swapOne, 900);
+        },
+        stop() {
+            clearInterval(swapTimer);
+            swapTimer = null;
+        }
+    };
+}
+
+/* ============================================================
+   WIRE UP
+   ============================================================ */
+
+const main = document.getElementById('main');
+const nav  = document.getElementById('nav');
+const controllers = [];
+
+YEARS.forEach((y, i) => {
+    const { base, list, demo } = resolveImages(y, i);
+    const section = buildShell(y, i, demo);
+    main.appendChild(section);
+
+    const stage = section.querySelector('.year-stage');
+    const seed = y.year;
+
+    let controller;
+    switch (y.style) {
+        case 'archive-drift':      controller = buildArchiveDrift(stage, base, list, seed);      break;
+        case 'marquee-rows':       controller = buildMarqueeRows(stage, base, list, seed);       break;
+        case 'ticker-columns':     controller = buildTickerColumns(stage, base, list, seed);     break;
+        case 'triptych-crossfade': controller = buildTriptychCrossfade(stage, base, list, seed); break;
+        case 'mosaic-breathe':     controller = buildMosaicBreathe(stage, base, list, seed);     break;
+    }
+    controllers.push({ section, controller, coda: false });
+
+    // Nav dot
+    const a = document.createElement('a');
+    a.href = '#year-' + y.year;
+    a.dataset.target = 'year-' + y.year;
+    a.innerHTML = `<span>${y.year}</span>`;
+    nav.appendChild(a);
+});
+
+/* ============================================================
+   CODA - textless ambient section after the last year.
+   Pools every unique image across every year (dedup by URL).
+   Always running, never gated on IntersectionObserver.
+   ============================================================ */
+const codaPool = (() => {
+    const seen = new Set();
+    const urls = [];
+    YEARS.forEach((y) => {
+        const { base, list } = resolveImages(y, 0);
+        list.forEach((name) => {
+            const url = base + name;
+            if (!seen.has(url)) { seen.add(url); urls.push(url); }
+        });
+    });
+    return urls;
+})();
+
+const codaSection = document.createElement('section');
+codaSection.className = 'year coda active';
+codaSection.dataset.index = YEARS.length;
+codaSection.dataset.year = 'coda';
+codaSection.id = 'year-coda';
+const codaStage = document.createElement('div');
+codaStage.className = 'year-stage';
+codaSection.appendChild(codaStage);
+main.appendChild(codaSection);
+const codaController = buildTickerForever(codaStage, codaPool, 9991);
+controllers.push({ section: codaSection, controller: codaController, coda: true });
+
+// Nav entry for the coda (infinity glyph)
+const codaNav = document.createElement('a');
+codaNav.href = '#year-coda';
+codaNav.dataset.target = 'year-coda';
+codaNav.innerHTML = '<span>&#8734;</span>';
+nav.appendChild(codaNav);
+
+/* IntersectionObserver: only the in-view section runs its animation. */
+const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+        const i = parseInt(e.target.dataset.index, 10);
+        const c = controllers[i];
+        if (e.isIntersecting && e.intersectionRatio > 0.55) {
+            e.target.classList.add('active');
+            c.controller.start && c.controller.start();
+            // Mark nav
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.querySelector(`.nav a[data-target="year-${e.target.dataset.year}"]`)?.classList.add('active');
+        } else {
+            e.target.classList.remove('active');
+            c.controller.stop && c.controller.stop();
+        }
+    });
+}, { threshold: [0, 0.55, 1] });
+
+controllers.forEach(({ section }) => io.observe(section));
+
+/* Keyboard nav (years + coda) */
+const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat(['year-coda']);
+
+function currentIndex() {
+    const y = window.scrollY + window.innerHeight * 0.5;
+    const i = Math.floor(y / window.innerHeight);
+    return Math.max(0, Math.min(SECTION_IDS.length - 1, i));
+}
+function gotoIndex(i) {
+    i = Math.max(0, Math.min(SECTION_IDS.length - 1, i));
+    document.getElementById(SECTION_IDS[i]).scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'ArrowDown' || e.code === 'PageDown') {
+        e.preventDefault();
+        gotoIndex(currentIndex() + 1);
+    } else if (e.code === 'ArrowUp' || e.code === 'PageUp') {
+        e.preventDefault();
+        gotoIndex(currentIndex() - 1);
+    } else if (e.code === 'Home') {
+        e.preventDefault(); gotoIndex(0);
+    } else if (e.code === 'End') {
+        e.preventDefault(); gotoIndex(YEARS.length - 1);
+    } else if (e.code === 'Space') {
+        e.preventDefault();
+        document.body.classList.toggle('paused');
+        controllers.forEach(({ controller, section }) => {
+            if (document.body.classList.contains('paused')) {
+                controller.stop && controller.stop();
+            } else if (section.classList.contains('active')) {
+                controller.start && controller.start();
+            }
+        });
+        document.querySelectorAll('.year').forEach((el) => {
+            el.style.animationPlayState = document.body.classList.contains('paused') ? 'paused' : 'running';
+        });
+    } else if (e.key && e.key.toLowerCase() === 'f') {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen?.();
+        } else {
+            document.exitFullscreen?.();
+        }
+    }
+});
+</script>
+
 </body>
 </html>
