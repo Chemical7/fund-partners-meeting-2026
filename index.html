@@ -1447,13 +1447,20 @@ function buildTickerForever(stage, urls, seed) {
 // 5. Mosaic breathe
 function buildMosaicBreathe(stage, base, images, seed) {
     stage.classList.add('mosaic-breathe');
-    // Over-provision cells so the mosaic always fills the viewport,
-    // even on wide/tall displays and after a browser resize. Grid
-    // grid-auto-flow:dense packs them with no gaps; overflow:hidden
-    // clips anything beyond the fold.
-    const TOTAL = 140;
+    // Size the cell count to the image pool so we don't over-repeat:
+    //   >= 60 source images -> one cell per image (no initial duplicates)
+    //   smaller pools       -> pad to 140 so the grid stays full
+    const TOTAL = images.length >= 60 ? images.length : 140;
 
-    const list = shuffle(images, seed);
+    // Two shuffled rounds so when duplicates DO appear (small pools or
+    // after swaps), they're dispersed across the grid, not clustered.
+    const r1 = shuffle(images, seed);
+    const r2 = shuffle(images, seed + 31);
+    const cellList = [];
+    for (let i = 0; i < TOTAL; i++) {
+        cellList.push(i < r1.length ? r1[i] : r2[(i - r1.length) % r2.length]);
+    }
+
     const cells = [];
     for (let i = 0; i < TOTAL; i++) {
         const cell = document.createElement('div');
@@ -1461,7 +1468,7 @@ function buildMosaicBreathe(stage, base, images, seed) {
 
         const f1 = document.createElement('div');
         f1.className = 'frame visible';
-        f1.style.backgroundImage = `url("${base}${list[i % list.length]}")`;
+        f1.style.backgroundImage = `url("${base}${cellList[i]}")`;
         f1.style.animationDelay = (i * 0.3) + 's';
 
         const f2 = document.createElement('div');
@@ -1472,6 +1479,10 @@ function buildMosaicBreathe(stage, base, images, seed) {
         stage.appendChild(cell);
         cells.push({ el: cell, f1, f2, index: i, active: 1 });
     }
+
+    // Use r1 (a shuffled copy of the full image pool) as the swap source
+    // so the swapCounter rotates through every image before repeating.
+    const list = r1;
 
     // Periodic image swap per cell
     let swapTimer = null;
