@@ -1576,6 +1576,35 @@ codaNav.innerHTML = '<span>&#8734;</span>';
 nav.appendChild(codaNav);
 
 /* ============================================================
+   NAIROBI 2026 - textless closing collage from the actual room.
+   76 photos from the partner meeting itself, mosaic-breathe
+   engine for Ken Burns + staggered crossfades.
+   ============================================================ */
+const NAIROBI_BASE = 'img/nairobi-2026/';
+const NAIROBI_IMAGES = Array.from({ length: 76 }, (_, i) =>
+    `nairobi-${(i + 1).toString().padStart(2, '0')}.jpg`
+);
+
+const nairobiSection = document.createElement('section');
+nairobiSection.className = 'year coda active';   // reuse coda styling (textless)
+nairobiSection.dataset.index = YEARS.length + 1;
+nairobiSection.dataset.year = 'nairobi';
+nairobiSection.id = 'year-nairobi';
+const nairobiStage = document.createElement('div');
+nairobiStage.className = 'year-stage';
+nairobiSection.appendChild(nairobiStage);
+main.appendChild(nairobiSection);
+const nairobiController = buildMosaicBreathe(nairobiStage, NAIROBI_BASE, NAIROBI_IMAGES, 7777);
+controllers.push({ section: nairobiSection, controller: nairobiController, coda: true });
+
+// Nav entry (star glyph - 'the room right now')
+const nairobiNav = document.createElement('a');
+nairobiNav.href = '#year-nairobi';
+nairobiNav.dataset.target = 'year-nairobi';
+nairobiNav.innerHTML = '<span>&#9733;</span>';
+nav.appendChild(nairobiNav);
+
+/* ============================================================
    AUTO-ADVANCE - ambient kiosk mode
    Each year holds for AUTO_ADVANCE.year ms, the coda holds
    for AUTO_ADVANCE.coda ms, then it loops back to 2022.
@@ -1592,8 +1621,10 @@ let autoTimer = null;
 function scheduleAutoAdvance(sectionIndex) {
     clearTimeout(autoTimer);
     if (document.body.classList.contains('paused')) return;
-    const isCoda = sectionIndex === YEARS.length;
-    const delay = isCoda ? AUTO_ADVANCE.coda : AUTO_ADVANCE.year;
+    // Sections >= YEARS.length are textless (coda + nairobi) and hold
+    // for AUTO_ADVANCE.coda. Year sections hold for AUTO_ADVANCE.year.
+    const isTextless = sectionIndex >= YEARS.length;
+    const delay = isTextless ? AUTO_ADVANCE.coda : AUTO_ADVANCE.year;
     autoTimer = setTimeout(() => {
         const next = (sectionIndex + 1) % SECTION_IDS.length;
         gotoIndex(next);
@@ -1659,8 +1690,8 @@ controllers.forEach(({ section }) => io.observe(section));
    (or when Space is pressed). */
 document.body.classList.add('paused');
 
-/* Keyboard nav (years + coda) */
-const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat(['year-coda']);
+/* Keyboard nav (years + coda + nairobi) */
+const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat(['year-coda', 'year-nairobi']);
 
 function currentIndex() {
     const y = window.scrollY + window.innerHeight * 0.5;
