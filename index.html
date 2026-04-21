@@ -474,6 +474,103 @@ body {
 .year.coda .year-hero,
 .year.coda .thread { display: none; }
 
+/* ===========================================
+   GROUP WORK - manual-control discussion slide.
+   No imagery, no auto-advance. Large copy,
+   plenty of breathing room, works alongside
+   the bottom-right break timer.
+   =========================================== */
+.year.group-work {
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(0, 196, 106, 0.08), transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(255, 199, 44, 0.06), transparent 60%),
+        linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-ground) 100%);
+}
+.year.group-work .year-overlay { display: none; }
+.year.group-work .year-hero {
+    padding: clamp(2.5rem, 5vh, 4.5rem) clamp(2.5rem, 5vw, 6rem);
+    align-items: center;
+    justify-content: center;
+}
+.group-work-panel {
+    max-width: min(1100px, 90vw);
+    padding: clamp(2.25rem, 4vh, 3.5rem) clamp(2.25rem, 4vw, 4rem);
+    background: rgba(10, 26, 21, 0.38);
+    backdrop-filter: blur(24px) saturate(1.15);
+    -webkit-backdrop-filter: blur(24px) saturate(1.15);
+    border: 1px solid rgba(245, 239, 226, 0.14);
+    border-radius: clamp(16px, 1.2vw, 22px);
+    box-shadow:
+        0 14px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(245, 239, 226, 0.08);
+    color: var(--cream);
+}
+.group-work-eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(0.85rem, 1vw, 1.1rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fund-gold);
+    margin-bottom: clamp(1rem, 2vh, 1.6rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.group-work-eyebrow::before {
+    content: '';
+    width: clamp(32px, 3vw, 52px);
+    height: 2px;
+    background: var(--fund-gold);
+    display: inline-block;
+}
+.group-work-title {
+    font-family: var(--font-body);
+    font-size: clamp(2.2rem, 4.2vw, 4rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(1.25rem, 2.3vh, 1.8rem);
+}
+.group-work-title em {
+    color: var(--fund-green);
+    font-style: italic;
+    font-weight: 600;
+}
+.group-work-sub {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: clamp(1.2rem, 2.2vh, 1.8rem);
+}
+.group-work-list {
+    list-style: none;
+    display: grid;
+    gap: clamp(0.9rem, 1.6vh, 1.5rem);
+    font-family: var(--font-body);
+    font-size: clamp(1.15rem, 1.7vw, 1.75rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.4;
+}
+.group-work-list li {
+    position: relative;
+    padding-left: 1.8rem;
+}
+.group-work-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 16px;
+    height: 3px;
+    background: var(--fund-gold);
+}
+.group-work-list li strong {
+    color: var(--fund-green);
+    font-weight: 600;
+}
+
 .ticker-forever {
     position: absolute;
     inset: 0;
@@ -1550,6 +1647,44 @@ YEARS.forEach((y, i) => {
 });
 
 /* ============================================================
+   GROUP WORK - manual-control discussion slide.
+   Does not auto-advance: user navigates away when ready.
+   Timer (top-right button / T key) runs in the corner.
+   ============================================================ */
+const groupWorkSection = document.createElement('section');
+groupWorkSection.className = 'year group-work';
+groupWorkSection.dataset.index = YEARS.length;
+groupWorkSection.dataset.year = 'group-work';
+groupWorkSection.id = 'year-group-work';
+groupWorkSection.innerHTML = `
+    <div class="year-overlay"></div>
+    <div class="year-hero">
+        <div class="group-work-panel">
+            <div class="group-work-eyebrow">Group Work</div>
+            <h2 class="group-work-title">Produce <em>ONE</em> aspiration for Year 5.</h2>
+            <p class="group-work-sub">In your groups, discuss:</p>
+            <ul class="group-work-list">
+                <li><strong>Our Aspiration:</strong> what is the one specific aspiration we think we need to hold for Year 5?</li>
+                <li><strong>Why it matters:</strong> what evidence or point from this morning's panels supports this aspiration?</li>
+                <li><strong>Our Practice:</strong> what are some practices we can improve to enable the aspiration?</li>
+            </ul>
+        </div>
+    </div>
+`;
+main.appendChild(groupWorkSection);
+controllers.push({
+    section: groupWorkSection,
+    controller: { start() {}, stop() {} },
+    noAutoAdvance: true,   // dwells forever; user navigates manually
+});
+
+const gwNav = document.createElement('a');
+gwNav.href = '#year-group-work';
+gwNav.dataset.target = 'year-group-work';
+gwNav.innerHTML = '<span>GW</span>';
+nav.appendChild(gwNav);
+
+/* ============================================================
    CODA - textless ambient section after the last year.
    Pools every unique image across every year (dedup by URL).
    Always running, never gated on IntersectionObserver.
@@ -1569,7 +1704,7 @@ const codaPool = (() => {
 
 const codaSection = document.createElement('section');
 codaSection.className = 'year coda active';
-codaSection.dataset.index = YEARS.length;
+codaSection.dataset.index = YEARS.length + 1;  // group-work sits at YEARS.length
 codaSection.dataset.year = 'coda';
 codaSection.id = 'year-coda';
 const codaStage = document.createElement('div');
@@ -1598,7 +1733,7 @@ const NAIROBI_IMAGES = Array.from({ length: 76 }, (_, i) =>
 
 const nairobiSection = document.createElement('section');
 nairobiSection.className = 'year coda active';   // reuse coda styling (textless)
-nairobiSection.dataset.index = YEARS.length + 1;
+nairobiSection.dataset.index = YEARS.length + 2;
 nairobiSection.dataset.year = 'nairobi';
 nairobiSection.id = 'year-nairobi';
 const nairobiStage = document.createElement('div');
@@ -1632,9 +1767,12 @@ let autoTimer = null;
 function scheduleAutoAdvance(sectionIndex) {
     clearTimeout(autoTimer);
     if (document.body.classList.contains('paused')) return;
-    // Sections >= YEARS.length are textless (coda + nairobi) and hold
-    // for AUTO_ADVANCE.coda. Year sections hold for AUTO_ADVANCE.year.
-    const isTextless = sectionIndex >= YEARS.length;
+    const c = controllers[sectionIndex];
+    // Group-work slide stays until the user advances manually.
+    if (c && c.noAutoAdvance) return;
+    // Textless sections (coda + nairobi) hold for AUTO_ADVANCE.coda.
+    // Year sections hold for AUTO_ADVANCE.year.
+    const isTextless = !!(c && c.coda);
     const delay = isTextless ? AUTO_ADVANCE.coda : AUTO_ADVANCE.year;
     autoTimer = setTimeout(() => {
         const next = (sectionIndex + 1) % SECTION_IDS.length;
@@ -1701,8 +1839,12 @@ controllers.forEach(({ section }) => io.observe(section));
    (or when Space is pressed). */
 document.body.classList.add('paused');
 
-/* Keyboard nav (years + coda + nairobi) */
-const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat(['year-coda', 'year-nairobi']);
+/* Keyboard nav: years -> group-work -> coda -> nairobi */
+const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat([
+    'year-group-work',
+    'year-coda',
+    'year-nairobi',
+]);
 
 function currentIndex() {
     const y = window.scrollY + window.innerHeight * 0.5;
