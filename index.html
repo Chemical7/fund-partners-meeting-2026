@@ -109,8 +109,8 @@ body {
 .year-center {
     align-self: end;
     justify-self: start;
-    max-width: min(820px, 82vw);
-    padding: clamp(1.25rem, 2.2vh, 2rem) clamp(1.5rem, 2.3vw, 2.4rem) clamp(1.5rem, 2.5vh, 2.25rem);
+    max-width: min(960px, 88vw);
+    padding: clamp(1.5rem, 2.6vh, 2.4rem) clamp(1.75rem, 2.8vw, 2.8rem) clamp(1.75rem, 2.9vh, 2.6rem);
     background: rgba(10, 26, 21, 0.22);
     backdrop-filter: blur(18px) saturate(1.15);
     -webkit-backdrop-filter: blur(18px) saturate(1.15);
@@ -159,20 +159,20 @@ body {
 }
 
 .year-bullets {
-    margin-top: clamp(1rem, 1.8vh, 1.5rem);
+    margin-top: clamp(1.2rem, 2.2vh, 1.8rem);
     list-style: none;
     display: grid;
-    gap: clamp(0.65rem, 1.1vh, 1.05rem);
-    max-width: 60ch;
+    gap: clamp(1rem, 1.8vh, 1.6rem);
+    max-width: 44ch;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.35vw, 1.4rem);
+    font-size: clamp(1.7rem, 2.4vw, 2.6rem);
     font-weight: 400;
     color: var(--cream);
-    line-height: 1.55;
+    line-height: 1.4;
 }
 .year-bullets li {
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
     text-shadow: 0 1px 10px rgba(10, 26, 21, 0.45);
 }
 .year-bullets li::before {
@@ -180,8 +180,8 @@ body {
     position: absolute;
     left: 0;
     top: 0.65em;
-    width: 12px;
-    height: 2px;
+    width: 18px;
+    height: 3px;
     background: var(--fund-gold);
 }
 .year-bullets li strong {
@@ -967,12 +967,9 @@ const YEARS = [
         caption: '',
         bullets: [
             'Africa’s largest Gender Lens Investing initiative launched.',
-            '<strong>US$200M</strong>, five-year Fund of Funds with technical assistance.',
-            'MEDA-led consortium. Investment + BDS + GDEI + learning + comms.',
+            '<strong>US$200M</strong>, five-year Fund of Funds. MEDA-led consortium.',
             '<strong>2027 target:</strong> 20 IVs, 200 SMEs, 15,000 dignified jobs.',
-            'Inception complete: governance, legal structures, pipeline in place.',
-            'First investments approved: <strong>Inua Capital</strong> (US$5M, Uganda), <strong>Aruwa Capital</strong> (US$2–3M, Nigeria).',
-            '<strong>23 IVs</strong> already identified as investment-eligible.'
+            'First investments: <strong>Inua Capital</strong> (US$5M) and <strong>Aruwa Capital</strong> (US$2–3M). 23 IVs in pipeline.'
         ],
         style: 'archive-drift',
         base: 'img/2022/',
@@ -997,9 +994,8 @@ const YEARS = [
         title: 'Capital <em>begins</em> moving.',
         caption: '',
         bullets: [
-            '<strong>US$7.2M</strong> committed across <strong>2 IVs</strong> by June.',
+            '<strong>US$7.2M</strong> committed across <strong>2 IVs</strong>.',
             'Directed at emerging, gender-diverse African fund managers.',
-            'Screening and due diligence refined. Readiness over scale.',
             'Hands-on advisory, pre-investment support, ecosystem engagement.',
             'Operational, governance, and learning systems built to carry scale.'
         ],
@@ -1048,7 +1044,6 @@ const YEARS = [
         bullets: [
             'Kampala consortium meeting triggers an acceleration phase.',
             '<strong>16 IVs</strong>, <strong>US$66.53M</strong> committed. Setup gives way to execution.',
-            'Tighter investment cycle. Legal close and drawdown prioritised.',
             'Warehousing + working capital deployed as catalytic tools.',
             'Fund repositioned as an active ecosystem shaper.'
         ],
@@ -1144,10 +1139,7 @@ const YEARS = [
         caption: '',
         bullets: [
             '<strong>16 IVs</strong> consolidated. <strong>US$85M</strong> committed.',
-            'Execution-focused: readiness, faster legal close, managed pacing.',
             'Active stewardship. Redeployment to IVs with clearer pathways.',
-            'Warehousing + working capital as ecosystem enablers.',
-            'Deepened support across IVs and portfolio companies.',
             'Ecosystem actor: learning, convening, storytelling, thought leadership.',
             '<strong>WEAVE</strong> launched with MEDA and the Mastercard Foundation.'
         ],
@@ -1232,10 +1224,8 @@ const YEARS = [
         caption: '',
         bullets: [
             'Catalytic capital translates into dignified work, particularly for young women.',
-            '<strong>20 IVs</strong> reached (target). <strong>US$127.87M</strong> committed (85%). Jobs at 75% of target.',
-            'TA + value creation reached <strong>95%</strong> of IVs and <strong>104</strong> portfolio companies.',
-            'Strongest performance in technology-enabled and agriculture-linked sectors.',
-            'Trusted convener in policy dialogue and gender-responsive investment.',
+            '<strong>20 IVs</strong> reached. <strong>US$127.87M</strong> committed (85%). Jobs at <strong>75%</strong> of target.',
+            'TA reached <strong>95%</strong> of IVs and <strong>104</strong> portfolio companies.',
             'Coming year: accelerate deployment to portfolio companies, spur job creation.'
         ],
         style: 'mosaic-breathe',
