@@ -578,7 +578,10 @@ body {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--cream-dim);
+    opacity: 0.08;
+    transition: opacity 0.5s ease;
 }
+.controls:hover { opacity: 0.9; }
 .controls kbd {
     font-family: var(--font-mono);
     background: rgba(245, 239, 226, 0.08);
@@ -709,8 +712,17 @@ const FALLBACK_IMAGES = [
 const YEARS = [
     {
         year: 2022,
-        title: 'First <em>moves</em>.',
-        caption: 'Fund launch. Early partners aligned. Foundational commitments in place.',
+        title: 'The Fund is <em>created</em>.',
+        caption: '',
+        bullets: [
+            '<strong>Transforming SME finance through gender lens investing:</strong> The Fund is created as Africa\\u2019s largest Gender Lens Investing initiative, designed to shift capital toward women-led, youth-focused SMEs and fund managers to drive inclusive job creation.',
+            '<strong>Large-scale, catalytic program:</strong> A US$200M, 5-year Fund of Funds and technical assistance initiative investing in African investment vehicles and pairing capital with business and gender-smart support.',
+            '<strong>Strong African-focused delivery model:</strong> Implemented by a MEDA-led consortium, MFAGF combines investment expertise, business development services, GDEI integration, learning, and strategic communications.',
+            '<strong>Clear impact ambition:</strong> By 2027, MFAGF aims to support 20 investment vehicles, finance 200 SMEs, and create 15,000 dignified jobs, primarily for women and youth across Sub-Saharan Africa.',
+            '<strong>Solid foundation established:</strong> The inception phase delivered robust governance, legal structures, approved investment policies, a strong pipeline, and the first two investments approved, positioning the fund for full implementation.',
+            '<strong>Approved investments to date:</strong> 2 investments approved within the first six months of operations. Inua Capital (Uganda): USD 5 million. Aruwa Capital (Nigeria): USD 2-3 million.',
+            '<strong>Pipeline scale:</strong> 23 additional IVs identified as investment-eligible, with multiple funds already in screening or due diligence, positioning MFAGF ahead of its Year 1 investment schedule.'
+        ],
         style: 'archive-drift',
         base: 'img/2022/',
         images: [
@@ -731,8 +743,15 @@ const YEARS = [
     },
     {
         year: 2023,
-        title: 'Building the <em>consortium</em>.',
-        caption: 'Partners convened. First field visits. The rhythm of the work begins to show.',
+        title: 'Capital <em>begins</em> moving.',
+        caption: '',
+        bullets: [
+            '<strong>Investments committed:</strong> By June 2023, the Fund had committed US$7.2 million across 2 Investment Vehicles (IVs), marking the transition from design and pipeline development into active capital deployment.',
+            '<strong>Focus of deployed capital:</strong> Investments were directed toward emerging, gender-diverse African fund managers aligned with the Fund\\u2019s mandate to unlock SME finance and demonstrate the viability of gender-lens and inclusive investment strategies.',
+            '<strong>Pipeline and market engagement:</strong> During 2023, the Fund reviewed a large and growing pool of potential IVs, refining its screening and due diligence processes while prioritizing additionality, innovation, and readiness over scale alone.',
+            '<strong>Catalytic role beyond capital:</strong> In parallel with investments, the Fund played an active catalytic role by providing hands-on advisory, pre-investment support, and ecosystem engagement to strengthen fund managers and improve their ability to attract follow-on capital.',
+            '<strong>Foundation for long-term impact:</strong> The 2023 period established the operational, governance, and learning systems needed to support future scale, positioning the Fund to accelerate investments and deepen impact in subsequent years.'
+        ],
         style: 'marquee-rows',
         base: 'img/2023/',
         images: [
@@ -773,8 +792,15 @@ const YEARS = [
     },
     {
         year: 2024,
-        title: 'Momentum <em>compounds</em>.',
-        caption: 'Field work multiplies. Portfolio stories surface. The consortium settles into cadence.',
+        title: 'Kampala <em>sharpens</em> the plan.',
+        caption: '',
+        bullets: [
+            '<strong>Investments committed:</strong> In 2024, following the Kampala consortium meeting, the Fund entered a clear acceleration phase, reaching 16 Investment Vehicles (IVs) with total commitments of US$66.53 million, signaling a pivot from setup and experimentation toward execution and scale.',
+            '<strong>Kampala-driven strategic shifts:</strong> The Kampala meeting marked a turning point, prompting deliberate shifts to unblock delivery, tightening the investment cycle, prioritizing legal execution and capital drawdown, and refocusing the portfolio on IVs most capable of near-term deployment and job creation.',
+            '<strong>Acceleration of capital deployment:</strong> Post-Kampala, the Fund emphasized warehousing and working capital as catalytic tools, streamlined decision-making, and strengthened cross-partner coordination to reduce delays between commitment, signing, and disbursement.',
+            '<strong>Strengthening IVs\\u2019 support and value creation:</strong> The year saw intensified hands-on support for IVs following the Kampala reset, with greater emphasis on governance, investment readiness, fundraising momentum, and earlier integration of business development services to accelerate downstream impact.',
+            '<strong>Learning, governance, and ecosystem repositioning:</strong> Learnings consolidated in and after Kampala reshaped governance practices, clarified roles across the consortium, refined gender and impact assumptions, and repositioned the Fund as an active ecosystem shaper, better equipped to translate commitments into sustained outcomes in subsequent years.'
+        ],
         style: 'ticker-columns',
         base: 'img/2024/',
         images: [
@@ -863,8 +889,17 @@ const YEARS = [
     },
     {
         year: 2025,
-        title: 'The reach <em>expands</em>.',
-        caption: 'Multiple Investment Vehicles active. Portfolio companies scaling. Regional footprint widens.',
+        title: 'The Fund takes <em>shape</em>.',
+        caption: '',
+        bullets: [
+            '<strong>Investments committed:</strong> In 2025, the Fund consolidated its portfolio at 16 Investment Vehicles (IVs) with total commitments reaching US$85 million, marking a shift from commitment-building to disciplined portfolio consolidation and performance management.',
+            '<strong>Execution-focused portfolio management:</strong> The year was characterized by a sharper focus on execution, prioritizing IVs with demonstrated readiness, accelerating legal close and drawdowns, and actively managing pacing to ensure capital moved more efficiently from commitment to deployment and onward to SMEs.',
+            '<strong>Active capital stewardship and portfolio discipline:</strong> The Fund adopted a more proactive stewardship approach in 2025, including redeploying capital toward IVs with clearer deployment pathways and stronger job-creation potential.',
+            '<strong>Deployment-first use of catalytic tools:</strong> Warehousing and working capital continued to play a strategic role, not as stand-alone instruments, but as ecosystem enablers, helping first-time and emerging IVs build track records, crowd in co-investors, and shorten time-to-market for capital reaching enterprises.',
+            '<strong>Deepened value creation across the ecosystem:</strong> Beyond capital, the Fund intensified hands-on support across the ecosystem, strengthening IV governance, reporting and fundraising capacity, embedding business development services earlier, and supporting portfolio companies to improve operational performance, resilience, and job quality.',
+            '<strong>Ecosystem positioning and market-shaping role:</strong> In 2025, the Fund increasingly operated as an ecosystem actor, using learning, convening, storytelling, and thought leadership to shift investor narratives, validate locally led and gender-intentional investment models, and influence how capital, technical assistance, and impact expectations interact across the market.',
+            '<strong>WEAVE incubation initiative launched:</strong> MEDA, in partnership with the Mastercard Foundation, launched WEAVE to strengthen women-led investment vehicles through tailored accompaniment, deepen value chains around portfolio companies to engage women-owned micro and small enterprises as suppliers and off-takers, and advance ecosystem enablers such as domiciliation and crowdfunding to support local and international capital mobilization.'
+        ],
         style: 'triptych-crossfade',
         base: 'img/2025/',
         images: [
@@ -942,8 +977,15 @@ const YEARS = [
     },
     {
         year: 2026,
-        title: 'The last six <em>months</em>.',
-        caption: 'Field visits, portfolios, consortium rooms, and published work. Everything visible is from the last six months.',
+        title: 'Capital <em>translates</em>.',
+        caption: '',
+        bullets: [
+            'Fund enters its fourth year. Catalytic capital and technical assistance begin to translate into dignified and fulfilling work for youth, particularly young women.',
+            'The investment portfolio reached its target of 20 investment vehicles, with total commitments of US$127.87M (85% of target) and jobs created at 75% of target.',
+            'Technical assistance and value creation expanded significantly, reaching 95% of investment vehicles and 104 portfolio companies, with strongest performance seen in technology-enabled and agriculture-linked sectors.',
+            'The Fund strengthened its ecosystem role as a trusted convener, increasing influence in policy dialogue, collaborative capital structuring, and visibility as a leader in gender-responsive and power-centred investment practices.',
+            'Increased focus on capital deployment with strong priorities in the coming year to focus on accelerating capital deployment to PCs to spur job creation.'
+        ],
         style: 'mosaic-breathe',
         base: 'img/2026/',
         images: [
@@ -1298,8 +1340,8 @@ nav.appendChild(codaNav);
    the whole cycle down, drop them to speed it up.
    ============================================================ */
 const AUTO_ADVANCE = {
-    year: 20000,
-    coda: 30000,
+    year: 45000,
+    coda: 40000,
 };
 
 let autoTimer = null;
