@@ -106,42 +106,6 @@ body {
     pointer-events: none;
 }
 
-.year-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-}
-
-.eyebrow {
-    font-family: var(--font-mono);
-    font-size: clamp(0.6rem, 0.72vw, 0.78rem);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--fund-gold);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.eyebrow::before {
-    content: '';
-    width: clamp(22px, 2.4vw, 38px);
-    height: 1px;
-    background: var(--fund-gold);
-    display: inline-block;
-}
-
-.meta {
-    font-family: var(--font-mono);
-    font-size: clamp(0.56rem, 0.68vw, 0.72rem);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    text-align: right;
-    line-height: 1.6;
-}
-.meta span { color: var(--cream); }
-
 .year-center {
     align-self: end;
     justify-self: start;
@@ -225,31 +189,6 @@ body {
     font-weight: 600;
     font-variant-numeric: tabular-nums;
 }
-
-.year-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 2rem;
-}
-
-.lockup {
-    font-family: var(--font-mono);
-    font-size: clamp(0.54rem, 0.65vw, 0.7rem);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    line-height: 1.6;
-}
-.lockup strong {
-    display: block;
-    color: var(--cream);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    font-size: clamp(0.68rem, 0.82vw, 0.82rem);
-    margin-bottom: 0.18rem;
-}
-.lockup-right { text-align: right; }
 
 .demo-badge {
     position: absolute;
@@ -402,12 +341,12 @@ body {
 }
 .year.active .ticker-col { animation-play-state: running; }
 
-.ticker-col:nth-child(1) { animation: driftUp   52s linear infinite; animation-delay:   0s; }
-.ticker-col:nth-child(2) { animation: driftDown 42s linear infinite; animation-delay:  -6s; }
-.ticker-col:nth-child(3) { animation: driftUp   36s linear infinite; animation-delay: -12s; }
-.ticker-col:nth-child(4) { animation: driftDown 38s linear infinite; animation-delay:  -4s; }
-.ticker-col:nth-child(5) { animation: driftUp   44s linear infinite; animation-delay:  -9s; }
-.ticker-col:nth-child(6) { animation: driftDown 50s linear infinite; animation-delay: -15s; }
+.ticker-col:nth-child(1) { animation: driftUp   78s linear infinite; animation-delay:   0s; }
+.ticker-col:nth-child(2) { animation: driftDown 64s linear infinite; animation-delay:  -9s; }
+.ticker-col:nth-child(3) { animation: driftUp   54s linear infinite; animation-delay: -16s; }
+.ticker-col:nth-child(4) { animation: driftDown 58s linear infinite; animation-delay:  -5s; }
+.ticker-col:nth-child(5) { animation: driftUp   66s linear infinite; animation-delay: -13s; }
+.ticker-col:nth-child(6) { animation: driftDown 76s linear infinite; animation-delay: -22s; }
 
 @keyframes driftUp   { from { transform: translateY(0); }    to { transform: translateY(-50%); } }
 @keyframes driftDown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
@@ -686,8 +625,6 @@ body {
     .ticker-col:nth-child(4) { display: none; }
     .ticker-forever { grid-template-columns: repeat(3, 1fr); }
     .forever-col:nth-child(4), .forever-col:nth-child(5) { display: none; }
-    .year-top, .year-bottom { flex-direction: column; align-items: flex-start; }
-    .meta, .lockup-right { text-align: left; }
     .nav { display: none; }
 }
 
