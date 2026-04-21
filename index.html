@@ -613,15 +613,23 @@ body {
     font-size: 0.66rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--cream-dim);
+    color: var(--cream);
     cursor: pointer;
-    opacity: 0.18;
-    transition: opacity 0.4s ease, color 0.2s ease, border-color 0.2s ease;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .timer-button:hover {
+    opacity: 1;
+    border-color: var(--fund-gold);
+    color: var(--fund-gold);
+}
+/* Dim the button once the show is running so it doesn't compete
+   with the animation. Hover still brings it back to full. */
+body:not(.paused) .timer-button {
+    opacity: 0.2;
+}
+body:not(.paused) .timer-button:hover {
     opacity: 0.95;
-    color: var(--cream);
-    border-color: rgba(255, 199, 44, 0.5);
 }
 
 .timer-modal {
@@ -1606,18 +1614,45 @@ function cancelAutoAdvance() {
     autoTimer = null;
 }
 
+/* Start/stop show helpers - called by Space toggle and Timer start. */
+function startShow() {
+    document.body.classList.remove('paused');
+    controllers.forEach(({ controller, section }) => {
+        if (section.classList.contains('active')) {
+            controller.start && controller.start();
+        }
+    });
+    document.querySelectorAll('.year').forEach((el) => {
+        el.style.animationPlayState = 'running';
+    });
+    scheduleAutoAdvance(currentIndex());
+}
+function stopShow() {
+    document.body.classList.add('paused');
+    controllers.forEach(({ controller }) => controller.stop && controller.stop());
+    document.querySelectorAll('.year').forEach((el) => {
+        el.style.animationPlayState = 'paused';
+    });
+    cancelAutoAdvance();
+}
+
 /* IntersectionObserver: only the in-view section runs its animation
-   AND schedules the next auto-advance. */
+   AND schedules the next auto-advance. Respects the paused state:
+   when paused (before timer starts), sections mark active for nav
+   but controllers and auto-advance stay halted. */
 const io = new IntersectionObserver((entries) => {
+    const isPaused = document.body.classList.contains('paused');
     entries.forEach((e) => {
         const i = parseInt(e.target.dataset.index, 10);
         const c = controllers[i];
         if (e.isIntersecting && e.intersectionRatio > 0.55) {
             const becameActive = !e.target.classList.contains('active');
             e.target.classList.add('active');
-            c.controller.start && c.controller.start();
-            if (becameActive) scheduleAutoAdvance(i);
-            // Mark nav
+            if (!isPaused) {
+                c.controller.start && c.controller.start();
+                if (becameActive) scheduleAutoAdvance(i);
+            }
+            // Mark nav regardless of pause state
             document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
             document.querySelector(`.nav a[data-target="year-${e.target.dataset.year}"]`)?.classList.add('active');
         } else {
@@ -1628,6 +1663,10 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: [0, 0.55, 1] });
 
 controllers.forEach(({ section }) => io.observe(section));
+
+/* Start in paused state - the show kicks in when the timer starts
+   (or when Space is pressed). */
+document.body.classList.add('paused');
 
 /* Keyboard nav (years + coda) */
 const SECTION_IDS = YEARS.map(y => 'year-' + y.year).concat(['year-coda']);
@@ -1658,22 +1697,10 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault(); gotoIndex(SECTION_IDS.length - 1);
     } else if (e.code === 'Space') {
         e.preventDefault();
-        document.body.classList.toggle('paused');
-        const isPaused = document.body.classList.contains('paused');
-        controllers.forEach(({ controller, section }) => {
-            if (isPaused) {
-                controller.stop && controller.stop();
-            } else if (section.classList.contains('active')) {
-                controller.start && controller.start();
-            }
-        });
-        document.querySelectorAll('.year').forEach((el) => {
-            el.style.animationPlayState = isPaused ? 'paused' : 'running';
-        });
-        if (isPaused) {
-            cancelAutoAdvance();
+        if (document.body.classList.contains('paused')) {
+            startShow();
         } else {
-            scheduleAutoAdvance(currentIndex());
+            stopShow();
         }
     } else if (e.key && e.key.toLowerCase() === 'f') {
         if (!document.fullscreenElement) {
@@ -1757,6 +1784,9 @@ timerStart .addEventListener('click', () => {
     if (!mins || mins < 1) return;
     closeTimerModal();
     startTimer(mins);
+    // Also kick off the slideshow from 2022 so the break starts cleanly
+    gotoIndex(0);
+    setTimeout(startShow, 150); // small delay so scroll settles first
 });
 timerMinutes.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') { e.preventDefault(); timerStart.click(); }
