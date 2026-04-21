@@ -233,6 +233,8 @@ body {
     animation-play-state: paused;
     will-change: transform;
     transform-origin: 42% 48%;
+    grid-auto-flow: dense;
+    align-content: start;
 }
 .year.active .archive-plane { animation-play-state: running; }
 @keyframes archiveDrift {
@@ -1315,7 +1317,10 @@ function buildArchiveDrift(stage, base, images, seed) {
     stage.appendChild(plane);
 
     const list = shuffle(images, seed);
-    const TARGET = Math.min(36, list.length * 2);
+    // Over-provision so the collage always fills the viewport even on
+    // wide/tall screens and after the plane's 110% zoom. The grid is
+    // overflow:hidden so excess tiles get clipped harmlessly.
+    const TARGET = 80;
     for (let i = 0; i < TARGET; i++) {
         const tile = document.createElement('div');
         tile.className = 'archive-tile';
