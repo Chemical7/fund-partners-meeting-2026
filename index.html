@@ -249,9 +249,8 @@ body {
     background: #1A3A30;
     box-shadow: 0 4px 14px rgba(0,0,0,0.4);
 }
-.archive-tile:nth-child(5n)  { grid-row: span 2; }
-.archive-tile:nth-child(9n)  { grid-column: span 2; }
-.archive-tile:nth-child(13n) { grid-row: span 2; grid-column: span 2; }
+/* Span rules removed — they could leave grid gaps at 2022's size.
+   Uniform cells guarantee edge-to-edge coverage. */
 .archive-tile img {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -1326,7 +1325,8 @@ function buildArchiveDrift(stage, base, images, seed) {
         tile.className = 'archive-tile';
         const img = document.createElement('img');
         img.src = base + list[i % list.length];
-        img.loading = 'lazy';
+        img.loading = 'eager';
+        img.decoding = 'async';
         img.alt = '';
         tile.appendChild(img);
         plane.appendChild(tile);
