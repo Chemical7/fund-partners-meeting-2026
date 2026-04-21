@@ -428,6 +428,8 @@ body {
     gap: clamp(4px, 0.6vw, 10px);
     padding: clamp(4px, 0.6vw, 10px);
     background: var(--bg-deep);
+    grid-auto-flow: dense;
+    align-content: start;
 }
 .mosaic-cell {
     position: relative;
@@ -1447,10 +1449,11 @@ function buildTickerForever(stage, urls, seed) {
 // 5. Mosaic breathe
 function buildMosaicBreathe(stage, base, images, seed) {
     stage.classList.add('mosaic-breathe');
-    // Compute approx cell count based on viewport
-    const cellsPerRow = Math.max(4, Math.floor(window.innerWidth / 220));
-    const rows = Math.max(3, Math.ceil(window.innerHeight / 200));
-    const TOTAL = Math.min(cellsPerRow * rows, 80);
+    // Over-provision cells so the mosaic always fills the viewport,
+    // even on wide/tall displays and after a browser resize. Grid
+    // grid-auto-flow:dense packs them with no gaps; overflow:hidden
+    // clips anything beyond the fold.
+    const TOTAL = 140;
 
     const list = shuffle(images, seed);
     const cells = [];
