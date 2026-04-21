@@ -109,8 +109,8 @@ body {
 .year-center {
     align-self: end;
     justify-self: start;
-    max-width: min(720px, 78vw);
-    padding: clamp(1.1rem, 1.9vh, 1.75rem) clamp(1.25rem, 2vw, 2rem) clamp(1.3rem, 2.2vh, 1.9rem);
+    max-width: min(820px, 82vw);
+    padding: clamp(1.25rem, 2.2vh, 2rem) clamp(1.5rem, 2.3vw, 2.4rem) clamp(1.5rem, 2.5vh, 2.25rem);
     background: rgba(10, 26, 21, 0.22);
     backdrop-filter: blur(18px) saturate(1.15);
     -webkit-backdrop-filter: blur(18px) saturate(1.15);
@@ -159,29 +159,29 @@ body {
 }
 
 .year-bullets {
-    margin-top: clamp(0.8rem, 1.4vh, 1.2rem);
+    margin-top: clamp(1rem, 1.8vh, 1.5rem);
     list-style: none;
     display: grid;
-    gap: clamp(0.35rem, 0.55vh, 0.55rem);
-    max-width: 62ch;
+    gap: clamp(0.65rem, 1.1vh, 1.05rem);
+    max-width: 60ch;
     font-family: var(--font-body);
-    font-size: clamp(0.72rem, 0.86vw, 0.88rem);
+    font-size: clamp(1rem, 1.35vw, 1.4rem);
     font-weight: 400;
     color: var(--cream);
-    line-height: 1.45;
+    line-height: 1.55;
 }
 .year-bullets li {
     position: relative;
-    padding-left: 1.1rem;
+    padding-left: 1.5rem;
     text-shadow: 0 1px 10px rgba(10, 26, 21, 0.45);
 }
 .year-bullets li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.6em;
-    width: 7px;
-    height: 1px;
+    top: 0.65em;
+    width: 12px;
+    height: 2px;
     background: var(--fund-gold);
 }
 .year-bullets li strong {
