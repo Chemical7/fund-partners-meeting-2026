@@ -99,8 +99,9 @@ body {
     position: absolute;
     inset: 0;
     z-index: 10;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
     padding: clamp(2rem, 4vh, 4rem) clamp(2rem, 5vw, 6rem);
     pointer-events: none;
 }
@@ -771,14 +772,8 @@ const FALLBACK_IMAGES = [
 const YEARS = [
     {
         year: 2022,
-        title: 'The Fund is <em>created</em>.',
-        caption: 'Africa\\u2019s largest gender-lens initiative takes shape. A US$200M, five-year Fund of Funds directed at women- and youth-focused SMEs.',
-        bullets: [
-            'MEDA-led consortium. <strong>US$200M</strong>, five years.',
-            'Target by 2027: <strong>20 IVs</strong>, <strong>200 SMEs</strong>, <strong>15,000</strong> dignified jobs.',
-            'First commitments approved: <strong>Inua Capital</strong> (US$5M) and <strong>Aruwa Capital</strong> (US$2-3M).',
-            '<strong>23 IVs</strong> already identified as investment-eligible in the pipeline.'
-        ],
+        title: 'First <em>moves</em>.',
+        caption: 'Fund launch. Early partners aligned. Foundational commitments in place.',
         style: 'archive-drift',
         base: 'img/2022/',
         images: [
@@ -799,14 +794,8 @@ const YEARS = [
     },
     {
         year: 2023,
-        title: 'Capital <em>begins</em> moving.',
-        caption: 'Design and pipeline give way to active deployment. The Fund crosses into execution with its first committed capital.',
-        bullets: [
-            '<strong>US$7.2M</strong> committed across <strong>2</strong> Investment Vehicles.',
-            'Directed at emerging, gender-diverse African fund managers.',
-            'Pre-investment advisory, due-diligence refinement, ecosystem engagement.',
-            'Operational, governance, and learning systems built to carry scale.'
-        ],
+        title: 'Building the <em>consortium</em>.',
+        caption: 'Partners convened. First field visits. The rhythm of the work begins to show.',
         style: 'marquee-rows',
         base: 'img/2023/',
         images: [
@@ -832,19 +821,23 @@ const YEARS = [
             'y23-08.jpg',
             'y23-09.jpg',
             'y23-10.jpg',
-            'y23-11.jpg'
+            'y23-11.jpg',
+            'y23-12.jpg',
+            'y23-13.jpg',
+            'y23-14.jpg',
+            'y23-15.jpg',
+            'y23-16.jpg',
+            'y23-17.jpg',
+            'y23-18.jpg',
+            'y23-19.jpg',
+            'y23-20.jpg',
+            'y23-21.jpg'
         ]
     },
     {
         year: 2024,
-        title: 'Kampala <em>sharpens</em> the plan.',
-        caption: 'Post-Kampala consortium reset: the Fund pivots from setup and experimentation toward execution and scale.',
-        bullets: [
-            '<strong>16 IVs</strong> committed, totaling <strong>US$66.53M</strong>.',
-            'Tighter investment cycle. Prioritised legal close and drawdown.',
-            'Warehousing and working capital as catalytic instruments.',
-            'Consortium roles clarified. Fund repositioned as an active ecosystem shaper.'
-        ],
+        title: 'Momentum <em>compounds</em>.',
+        caption: 'Field work multiplies. Portfolio stories surface. The consortium settles into cadence.',
         style: 'ticker-columns',
         base: 'img/2024/',
         images: [
@@ -933,14 +926,8 @@ const YEARS = [
     },
     {
         year: 2025,
-        title: 'The Fund takes <em>shape</em>.',
-        caption: 'Portfolio consolidation over commitment-building. Capital moves more efficiently from commitment to deployment to SMEs.',
-        bullets: [
-            '<strong>US$85M</strong> committed across <strong>16 IVs</strong>.',
-            'Active stewardship: redeployment toward IVs with clearer pathways.',
-            'Warehousing and working capital enable first-time and emerging IVs.',
-            '<strong>WEAVE</strong> launched with MEDA and the Mastercard Foundation.'
-        ],
+        title: 'The reach <em>expands</em>.',
+        caption: 'Multiple Investment Vehicles active. Portfolio companies scaling. Regional footprint widens.',
         style: 'triptych-crossfade',
         base: 'img/2025/',
         images: [
@@ -1012,14 +999,14 @@ const YEARS = [
             'y25-66.jpg',
             'y25-67.jpg',
             'y25-68.jpg',
-            'y25-69.jpg'
+            'y25-69.jpg',
+            'y25-70.jpg'
         ]
     },
     {
         year: 2026,
         title: 'The last six <em>months</em>.',
-        caption: 'Field visits, portfolios, consortium rooms, and published work. Everything visible here is from the last six months.',
-        bullets: [],
+        caption: 'Field visits, portfolios, consortium rooms, and published work. Everything visible is from the last six months.',
         style: 'mosaic-breathe',
         base: 'img/2026/',
         images: [
@@ -1082,25 +1069,11 @@ function buildShell(y, index, demo) {
         <div class="year-overlay"></div>
         ${demo ? '<div class="demo-badge">Demo imagery · ' + y.year + ' folder empty</div>' : ''}
         <div class="year-hero">
-            <div class="year-top">
-                <div class="eyebrow">Africa Growth Fund · ${y.year}</div>
-                <div class="meta">Section ${index + 1} of ${YEARS.length}<br><span>${y.style.replace('-', ' ')}</span></div>
-            </div>
             <div class="year-center">
                 <div class="year-digit">${y.year}</div>
                 <h2 class="year-title">${y.title}</h2>
                 <p class="year-caption">${y.caption}</p>
                 ${y.bullets && y.bullets.length ? `<ul class="year-bullets">${y.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : ''}
-            </div>
-            <div class="year-bottom">
-                <div class="lockup">
-                    <strong>ACG</strong>
-                    Africa Communications Group
-                </div>
-                <div class="lockup lockup-right">
-                    <strong>Mastercard Foundation</strong>
-                    Africa Growth Fund
-                </div>
             </div>
         </div>
     `;
